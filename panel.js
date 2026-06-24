@@ -395,9 +395,9 @@ const DASHBOARD_METRICS = [
     titulo: "Ingresos totales generados (mes)",
     valor: "$284,900",
     tendencia: "+12.4%",
-    chip: "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/25 dark:text-emerald-100",
-    colorA: "bg-emerald-400 dark:bg-emerald-400",
-    colorB: "bg-emerald-600 dark:bg-emerald-300",
+    chip: "bg-cyan-100 text-cyan-700 dark:bg-cyan-500/25 dark:text-cyan-100",
+    colorA: "bg-cyan-400 dark:bg-cyan-300",
+    colorB: "bg-cyan-500 dark:bg-cyan-200",
     legendA: "Renovaciones",
     legendB: "Nuevos contratos"
   },
@@ -405,9 +405,9 @@ const DASHBOARD_METRICS = [
     titulo: "Perdida por descuentos y cupones",
     valor: "$18,320",
     tendencia: "-2.1%",
-    chip: "bg-orange-100 text-orange-700 dark:bg-orange-500/25 dark:text-orange-100",
-    colorA: "bg-orange-400 dark:bg-orange-400",
-    colorB: "bg-orange-600 dark:bg-orange-300",
+    chip: "bg-violet-100 text-violet-700 dark:bg-violet-500/25 dark:text-violet-100",
+    colorA: "bg-violet-400 dark:bg-violet-300",
+    colorB: "bg-violet-600 dark:bg-violet-200",
     legendA: "Descuento programado",
     legendB: "Promociones activas"
   },
@@ -415,9 +415,9 @@ const DASHBOARD_METRICS = [
     titulo: "Agentes activos en clientes",
     valor: "1,286",
     tendencia: "+8.2%",
-    chip: "bg-cyan-100 text-cyan-700 dark:bg-cyan-500/25 dark:text-cyan-100",
-    colorA: "bg-cyan-400 dark:bg-cyan-400",
-    colorB: "bg-cyan-600 dark:bg-cyan-300",
+    chip: "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/25 dark:text-emerald-100",
+    colorA: "bg-emerald-400 dark:bg-emerald-300",
+    colorB: "bg-emerald-600 dark:bg-emerald-200",
     legendA: "Alta semanal",
     legendB: "Base estable"
   },
@@ -425,9 +425,9 @@ const DASHBOARD_METRICS = [
     titulo: "Agentes marcados como fallando",
     valor: "47",
     tendencia: "+1.6%",
-    chip: "bg-fuchsia-100 text-fuchsia-700 dark:bg-fuchsia-500/25 dark:text-fuchsia-100",
-    colorA: "bg-fuchsia-400 dark:bg-fuchsia-400",
-    colorB: "bg-fuchsia-600 dark:bg-fuchsia-300",
+    chip: "bg-amber-100 text-amber-700 dark:bg-amber-500/25 dark:text-amber-100",
+    colorA: "bg-amber-400 dark:bg-amber-300",
+    colorB: "bg-amber-600 dark:bg-amber-200",
     legendA: "Incidentes recuperados",
     legendB: "Incidentes abiertos"
   }
@@ -436,12 +436,12 @@ const DASHBOARD_METRICS = [
 const WEEK_ACTIVITY_CLASSES = ["h-8", "h-14", "h-10", "h-16", "h-12", "h-20", "h-11"];
 const WEEK_ACTIVITY_COLORS = [
   "bg-cyan-500 dark:bg-cyan-300",
-  "bg-blue-500 dark:bg-blue-300",
-  "bg-indigo-500 dark:bg-indigo-300",
+  "bg-cyan-400 dark:bg-cyan-200",
   "bg-violet-500 dark:bg-violet-300",
-  "bg-fuchsia-500 dark:bg-fuchsia-300",
-  "bg-pink-500 dark:bg-pink-300",
-  "bg-orange-500 dark:bg-orange-300"
+  "bg-violet-400 dark:bg-violet-200",
+  "bg-emerald-500 dark:bg-emerald-300",
+  "bg-emerald-400 dark:bg-emerald-200",
+  "bg-amber-500 dark:bg-amber-300"
 ];
 
 function formatMoney(value) {
@@ -466,15 +466,23 @@ function getStatusBadge(status) {
   return "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-200";
 }
 
+function getStatusHover(status) {
+  const lower = status.toLowerCase();
+  if (lower.includes("inact") || lower.includes("fall")) {
+    return "hover:bg-red-50/90 hover:shadow-[inset_0_0_0_1px_rgba(239,68,68,0.28)] dark:hover:bg-red-500/10";
+  }
+  return "hover:bg-cyan-50/90 hover:shadow-[inset_0_0_0_1px_rgba(34,211,238,0.35)] dark:hover:bg-cyan-500/10";
+}
+
 function renderNav(activeKey, mobile = false) {
   return NAV_ITEMS.map((item) => {
     const active = item.key === activeKey;
     const base = mobile
-      ? "flex flex-col items-center justify-center gap-1 rounded-2xl px-2 py-2 text-[11px] font-semibold transition hover:bg-slate-100 dark:hover:bg-slate-800"
-      : "flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold";
+      ? "flex flex-col items-center justify-center gap-1 rounded-2xl px-1.5 py-2 text-[10px] font-semibold tracking-wide transition-colors duration-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+      : "flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-sm font-semibold";
     const state = active
-      ? "bg-[#0A2540] text-white shadow-sm dark:bg-[#2463EB]"
-      : "text-[#1A1F26] dark:text-[#F3F4F6]";
+      ? "bg-gradient-to-r from-[#06264A] to-[#0A2540] text-white shadow-[0_10px_30px_-18px_rgba(10,37,64,0.95)] dark:from-[#1B4DD5] dark:to-[#2463EB] dark:shadow-[0_14px_36px_-20px_rgba(36,99,235,0.95)]"
+      : "text-[#1A1F26] dark:text-[#D7DFEA]";
 
     return `
       <a href="${item.href}" class="${base} ${state}" ${active ? 'aria-current="page"' : ""}>
@@ -488,32 +496,46 @@ function renderNav(activeKey, mobile = false) {
 function renderLayout(pageKey, pageContent) {
   const meta = PAGE_META[pageKey];
   return `
-    <div class="min-h-screen bg-[#F8F9FA] font-['Plus_Jakarta_Sans','Avenir_Next','Segoe_UI',sans-serif] text-[#1A1F26] transition-colors duration-500 ease-out dark:bg-[#0B0F17] dark:text-[#F3F4F6]">
+    <div class="min-h-screen bg-[#EEF3FB] font-['Sora','Avenir_Next','Segoe_UI',sans-serif] text-[#1A1F26] transition-colors duration-500 ease-out dark:bg-[#050A14] dark:text-[#F3F4F6]">
       <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div class="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-[#0A2540]/10 blur-3xl dark:bg-[#2463EB]/20"></div>
-        <div class="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-[#0A2540]/10 blur-3xl dark:bg-[#2463EB]/15"></div>
+        <div class="absolute -left-20 -top-20 h-80 w-80 rounded-full bg-[#0A2540]/10 blur-3xl dark:bg-[#1B4DD5]/25"></div>
+        <div class="absolute bottom-[-8rem] right-[-5rem] h-[28rem] w-[28rem] rounded-full bg-[#0A2540]/10 blur-3xl dark:bg-[#06B6D4]/15"></div>
+        <div class="absolute left-1/2 top-1/3 h-44 w-44 -translate-x-1/2 rounded-full bg-[#2463EB]/10 blur-3xl dark:bg-[#2463EB]/20"></div>
       </div>
 
-      <div class="flex pb-20 lg:pb-0">
-        <aside class="hidden transition-colors duration-500 ease-out lg:flex lg:w-72 lg:flex-col lg:border-r lg:border-[#697386]/25 lg:bg-white/85 lg:px-5 lg:py-6 lg:backdrop-blur dark:lg:border-[#2D3748] dark:lg:bg-[#161C2A]/85" aria-label="Navegacion principal">
-          <div class="mb-6 rounded-2xl border border-[#697386]/25 bg-gradient-to-br from-[#0A2540] to-[#13375e] p-4 text-white dark:border-[#2D3748] dark:from-[#2463EB] dark:to-[#173f8a]">
-            <p class="text-xs uppercase tracking-[0.18em] text-white/75">AgentHub SaaS</p>
-            <p class="mt-2 text-lg font-bold">Admin Panel</p>
+      <div class="flex pb-20 md:pb-0">
+        <aside class="hidden transition-colors duration-500 ease-out md:flex md:w-72 md:flex-col md:border-r md:border-[#697386]/20 md:bg-white/85 md:px-5 md:py-6 md:backdrop-blur-xl dark:md:border-[#2D3748] dark:md:bg-[#091223]/85" aria-label="Navegacion principal">
+          <div class="mb-6 rounded-3xl border border-[#697386]/20 bg-gradient-to-br from-[#0A2540] via-[#0A2540] to-[#154879] p-5 text-white shadow-[0_24px_42px_-26px_rgba(10,37,64,0.95)] dark:border-[#2D3748] dark:from-[#10244C] dark:via-[#123772] dark:to-[#2463EB]">
+            <p class="text-xs uppercase tracking-[0.2em] text-white/80">AgentHub SaaS</p>
+            <p class="mt-2 text-xl font-black">Admin Panel</p>
+            <p class="mt-1 text-sm text-cyan-100/80">Command Center</p>
           </div>
           <nav class="space-y-2" aria-label="Secciones del panel">
             ${renderNav(pageKey)}
           </nav>
+          <article class="mt-auto rounded-3xl border border-[#697386]/20 bg-[#0A2540] p-4 text-white shadow-[0_24px_45px_-30px_rgba(10,37,64,0.95)] dark:border-[#2D3748] dark:bg-[#0F1D37]">
+            <p class="text-xs uppercase tracking-[0.2em] text-white/75">Manager</p>
+            <p class="mt-2 text-2xl font-black leading-none">Camila</p>
+            <p class="mt-1 text-sm text-slate-300">Performance Lead</p>
+            <div class="mt-3 h-2 w-full rounded-full bg-white/20">
+              <div class="h-2 w-[74%] rounded-full bg-cyan-300"></div>
+            </div>
+            <p class="mt-2 text-xs text-slate-300">Objetivo trimestral: 74%</p>
+          </article>
         </aside>
 
         <div class="flex min-h-screen flex-1 flex-col">
-          <header class="border-b border-[#697386]/25 bg-white/85 px-4 py-4 backdrop-blur transition-colors duration-500 ease-out dark:border-[#2D3748] dark:bg-[#161C2A]/85 sm:px-6 lg:px-10">
-            <div class="flex items-center justify-between gap-4">
+          <header class="border-b border-[#697386]/20 bg-white/85 px-4 py-4 backdrop-blur-xl transition-colors duration-500 ease-out dark:border-[#2D3748] dark:bg-[#091223]/85 sm:px-6 lg:px-10">
+            <div class="flex flex-wrap items-center justify-between gap-4">
               <div>
-                <p class="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#697386] dark:text-[#9CA3AF]">Control center</p>
-                <h1 class="mt-1 text-xl font-black tracking-tight sm:text-3xl">${meta.title}</h1>
+                <p class="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#697386] dark:text-[#8EA5C7]">Performance Command Center</p>
+                <h1 class="mt-1 text-2xl font-black tracking-tight sm:text-4xl">${meta.title}</h1>
                 <p class="mt-1 text-sm text-[#697386] dark:text-[#9CA3AF]">${meta.subtitle}</p>
               </div>
-              <div class="flex items-center gap-3 rounded-2xl border border-[#697386]/25 bg-[#F8F9FA] px-3 py-2 shadow-sm dark:border-[#2D3748] dark:bg-[#0B0F17]">
+              <div class="flex items-center gap-2 sm:gap-3">
+                <button type="button" class="hidden rounded-xl border border-[#697386]/25 bg-white px-3 py-2 text-sm font-semibold text-[#1A1F26] transition-colors hover:bg-slate-100 dark:border-[#2D3748] dark:bg-[#0F1D37] dark:text-[#D7DFEA] dark:hover:bg-[#152744] sm:inline-flex">Exportar</button>
+                <button type="button" class="hidden rounded-xl border border-[#697386]/25 bg-white px-3 py-2 text-sm font-semibold text-[#1A1F26] transition-colors hover:bg-slate-100 dark:border-[#2D3748] dark:bg-[#0F1D37] dark:text-[#D7DFEA] dark:hover:bg-[#152744] sm:inline-flex">Compartir</button>
+                <div class="flex items-center gap-3 rounded-2xl border border-[#697386]/25 bg-[#F8F9FA] px-3 py-2 shadow-sm dark:border-[#2D3748] dark:bg-[#0B1222]">
                 <button
                   id="theme-toggle"
                   type="button"
@@ -523,31 +545,32 @@ function renderLayout(pageKey, pageContent) {
                 >
                   Modo oscuro
                 </button>
-                <div class="hidden text-right sm:block">
+                <div class="hidden text-right lg:block">
                   <p class="text-sm font-bold">Camila Admin</p>
                   <p class="text-xs text-[#697386] dark:text-[#9CA3AF]">Operaciones AgentHub</p>
                 </div>
                 <div class="grid h-10 w-10 place-items-center rounded-full bg-[#0A2540] text-sm font-bold text-white dark:bg-[#2463EB]" aria-label="Foto de perfil de usuario">CA</div>
+                </div>
               </div>
             </div>
           </header>
 
-          <main id="main-content" class="flex-1 px-4 py-8 sm:px-6 lg:px-10 lg:py-10" tabindex="-1">
+          <main id="main-content" class="flex-1 px-4 py-7 sm:px-6 lg:px-10 lg:py-11" tabindex="-1">
             ${pageContent}
           </main>
 
-          <footer class="border-t border-[#697386]/25 bg-white/85 px-4 py-4 text-xs text-[#697386] backdrop-blur transition-colors duration-500 ease-out dark:border-[#2D3748] dark:bg-[#161C2A]/85 dark:text-[#9CA3AF] sm:px-6 lg:px-10">
-            <p>Copyright 2026 AgentHub · Soporte: soporte@agenthub.ai · Politicas Legales · Creditos de Desarrollo: Equipo Frontend AgentHub</p>
+          <footer class="border-t border-[#697386]/20 bg-white/85 px-4 py-4 text-xs text-[#697386] backdrop-blur-xl transition-colors duration-500 ease-out dark:border-[#2D3748] dark:bg-[#091223]/85 dark:text-[#9CA3AF] sm:px-6 lg:px-10">
+            <p>Copyright 2026 AgentHub · <a href="#" class="font-semibold hover:text-[#1A1F26] dark:hover:text-white">Soporte</a> · <a href="#" class="font-semibold hover:text-[#1A1F26] dark:hover:text-white">Politicas Legales</a> · Creditos de Desarrollo: Equipo Frontend AgentHub</p>
           </footer>
         </div>
       </div>
 
-      <nav class="fixed inset-x-0 bottom-0 z-40 border-t border-[#697386]/25 bg-white/90 px-2 py-2 backdrop-blur transition-colors duration-500 ease-out dark:border-[#2D3748] dark:bg-[#161C2A]/90 lg:hidden" aria-label="Navegacion inferior">
+      <nav class="fixed inset-x-0 bottom-0 z-40 border-t border-[#697386]/20 bg-white/95 px-2 py-2 backdrop-blur-xl transition-colors duration-500 ease-out dark:border-[#2D3748] dark:bg-[#091223]/90 md:hidden" aria-label="Navegacion inferior">
         <div class="grid grid-cols-6 gap-1">${renderNav(pageKey, true)}</div>
       </nav>
 
       <div id="modal-overlay" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/55 p-4" role="presentation">
-        <div class="max-h-[90vh] w-full max-w-2xl overflow-auto rounded-2xl border border-[#697386]/30 bg-white p-6 shadow-2xl dark:border-[#2D3748] dark:bg-[#161C2A]" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="max-h-[90vh] w-full max-w-2xl overflow-auto rounded-3xl border border-[#697386]/30 bg-white p-6 shadow-[0_30px_90px_-35px_rgba(10,37,64,0.9)] dark:border-[#2D3748] dark:bg-[#111C33]" role="dialog" aria-modal="true" aria-labelledby="modal-title">
           <div class="mb-4 flex items-start justify-between gap-4">
             <h2 id="modal-title" class="text-lg font-bold tracking-tight"></h2>
             <button id="modal-close" type="button" class="rounded-md px-2 py-1 text-sm font-medium text-[#697386] hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2463EB] dark:text-[#9CA3AF] dark:hover:bg-slate-800" aria-label="Cerrar modal">Cerrar</button>
@@ -561,14 +584,14 @@ function renderLayout(pageKey, pageContent) {
 
 function renderMetricCard(metric) {
   return `
-    <article class="group relative overflow-hidden rounded-2xl border border-[#697386]/20 bg-white p-6 shadow-sm transition-colors duration-500 ease-out dark:border-[#2D3748] dark:bg-[#161C2A]">
+    <article class="group relative overflow-hidden rounded-3xl border border-[#697386]/20 bg-white p-6 shadow-[0_24px_55px_-35px_rgba(10,37,64,0.8)] transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_26px_70px_-36px_rgba(10,37,64,0.85)] dark:border-[#2D3748] dark:bg-[#0C162B] dark:shadow-[0_24px_55px_-35px_rgba(36,99,235,0.75)]">
       <div aria-hidden="true" class="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[#0A2540]/10 blur-2xl dark:bg-[#2463EB]/15"></div>
       <header class="mb-4 flex items-start justify-between gap-4">
         <h3 class="text-xs font-bold uppercase tracking-[0.16em] text-[#697386] dark:text-[#9CA3AF]">${metric.titulo}</h3>
         <span class="rounded-full px-3 py-1 text-xs font-semibold ${metric.chip}">${metric.tendencia}</span>
       </header>
       <p class="mb-4 text-4xl font-black tracking-tight">${metric.valor}</p>
-      <div class="mb-4 grid h-24 grid-cols-12 items-end gap-2 rounded-xl bg-[#F8F9FA] p-3 dark:bg-[#0B0F17]" aria-label="Grafico de comportamiento de la metrica">
+      <div class="mb-4 grid h-24 grid-cols-12 items-end gap-2 rounded-2xl bg-[#F8F9FA] p-3 dark:bg-[#050A14]" aria-label="Grafico de comportamiento de la metrica">
         <div class="col-span-3 h-8 rounded-md ${metric.colorA}"></div>
         <div class="col-span-4 h-14 rounded-md ${metric.colorB}"></div>
         <div class="col-span-2 h-7 rounded-md ${metric.colorA}"></div>
@@ -586,11 +609,20 @@ function renderDashboard() {
   return `
     <section class="space-y-6" aria-labelledby="dashboard-metricas">
       <h2 id="dashboard-metricas" class="sr-only">Metricas del dashboard</h2>
+      <section class="rounded-3xl border border-[#697386]/20 bg-white/92 p-5 backdrop-blur-sm shadow-[0_20px_50px_-40px_rgba(10,37,64,0.85)] dark:border-[#2D3748] dark:bg-[#0C162B]/95 sm:p-6">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#697386] dark:text-[#8EA5C7]">Buscar</p>
+        <input type="search" aria-label="Buscar campana, creador o producto" placeholder="Campana, creador o producto" class="mt-3 w-full rounded-2xl border border-[#697386]/30 bg-[#F8F9FA] px-4 py-3 text-sm font-medium outline-none ring-0 placeholder:text-[#697386] focus-visible:border-[#2463EB] dark:border-[#2D3748] dark:bg-[#050A14] dark:placeholder:text-[#8EA5C7]" />
+        <div class="mt-4 grid grid-cols-1 gap-3 md:grid-cols-3">
+          <select class="rounded-xl border border-[#697386]/30 bg-white px-3 py-2.5 text-sm font-semibold dark:border-[#2D3748] dark:bg-[#050A14]" aria-label="Filtrar por plataforma"><option>Todas las plataformas</option></select>
+          <select class="rounded-xl border border-[#697386]/30 bg-white px-3 py-2.5 text-sm font-semibold dark:border-[#2D3748] dark:bg-[#050A14]" aria-label="Filtrar por producto"><option>Todos los productos</option></select>
+          <select class="rounded-xl border border-[#697386]/30 bg-white px-3 py-2.5 text-sm font-semibold dark:border-[#2D3748] dark:bg-[#050A14]" aria-label="Filtrar por fecha"><option>Ultimos 30 dias</option></select>
+        </div>
+      </section>
       <div class="grid grid-cols-1 gap-5 lg:grid-cols-2">
         ${DASHBOARD_METRICS.map(renderMetricCard).join("")}
       </div>
 
-      <section class="rounded-2xl border border-dashed border-[#697386]/40 bg-white p-7 transition-colors duration-500 ease-out dark:border-[#2D3748] dark:bg-[#161C2A]" aria-labelledby="actividad-semanal">
+      <section class="rounded-3xl border border-dashed border-[#697386]/35 bg-white p-7 transition-colors duration-500 ease-out dark:border-[#2D3748] dark:bg-[#0C162B]" aria-labelledby="actividad-semanal">
         <h3 id="actividad-semanal" class="text-xl font-black tracking-tight">Actividad semanal</h3>
         <p class="mt-2 text-sm text-[#697386] dark:text-[#9CA3AF]">Marcador de posicion para grafico de volumen de operaciones por dia.</p>
         <div class="mt-6 grid grid-cols-7 items-end gap-2" aria-hidden="true">
@@ -604,7 +636,9 @@ function renderDashboard() {
 function dropdownButton(id, label = "Abrir acciones") {
   return `
     <div class="relative inline-block text-left">
-      <button type="button" data-dropdown-toggle="${id}" class="rounded-md border border-[#697386]/30 px-3 py-1.5 text-sm font-semibold dark:border-[#2D3748]" aria-haspopup="menu" aria-expanded="false" aria-label="${label}">...</button>
+      <button type="button" data-dropdown-toggle="${id}" class="inline-flex items-center justify-center rounded-xl border border-[#697386]/30 px-2.5 py-1.5 text-sm font-semibold transition-colors hover:bg-slate-100 dark:border-[#2D3748] dark:hover:bg-[#0B1222]" aria-haspopup="menu" aria-expanded="false" aria-label="${label}">
+        <svg viewBox="0 0 24 24" class="h-4 w-4" aria-hidden="true"><path fill="currentColor" d="M6 12a2 2 0 1 0 0.01 0ZM12 12a2 2 0 1 0 0.01 0ZM18 12a2 2 0 1 0 0.01 0Z"/></svg>
+      </button>
       <div id="${id}" class="absolute right-0 z-20 mt-1 hidden w-44 rounded-xl border border-[#697386]/25 bg-white p-1 shadow-lg dark:border-[#2D3748] dark:bg-[#161C2A]" role="menu"></div>
     </div>
   `;
@@ -612,7 +646,7 @@ function dropdownButton(id, label = "Abrir acciones") {
 
 function renderUsuarios() {
   const rows = USERS.map((user, idx) => `
-    <tr data-user-row="${user.id}" class="border-b border-[#697386]/20 dark:border-[#2D3748]">
+    <tr data-user-row="${user.id}" class="border-b border-[#697386]/20 transition-all duration-200 ${getStatusHover(user.estado)} dark:border-[#2D3748]">
       <td class="px-4 py-3 font-semibold">${user.nombre} ${user.apellido}</td>
       <td class="px-4 py-3">${user.email}</td>
       <td class="px-4 py-3">${user.planNombre}</td>
@@ -622,12 +656,12 @@ function renderUsuarios() {
   `).join("");
 
   return `
-    <section class="rounded-2xl border border-[#697386]/20 bg-white shadow-sm dark:border-[#2D3748] dark:bg-[#161C2A]">
+    <section class="rounded-3xl border border-[#697386]/20 bg-white/94 shadow-[0_25px_60px_-38px_rgba(10,37,64,0.8)] backdrop-blur-sm dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_25px_60px_-38px_rgba(36,99,235,0.7)]">
       <header class="border-b border-[#697386]/20 px-4 py-4 dark:border-[#2D3748] sm:px-6">
         <h2 class="text-xl font-black tracking-tight">Usuarios registrados</h2>
       </header>
       <div class="overflow-x-auto">
-        <table class="min-w-full text-sm" aria-label="Tabla de usuarios">
+        <table class="min-w-[760px] w-full text-sm" aria-label="Tabla de usuarios">
           <thead class="bg-[#F8F9FA] text-left text-xs uppercase tracking-[0.14em] text-[#697386] dark:bg-[#0B0F17] dark:text-[#9CA3AF]">
             <tr>
               <th class="px-4 py-3">Nombre</th><th class="px-4 py-3">Email</th><th class="px-4 py-3">Plan</th><th class="px-4 py-3">Estado</th><th class="px-4 py-3 text-right">Acciones</th>
@@ -644,7 +678,7 @@ function renderAgentes() {
   return `
     <section class="space-y-5" aria-label="Listado de agentes">
       ${AGENTS.map((agent, idx) => `
-        <article data-agent-row="${agent.id}" class="rounded-2xl border border-[#697386]/20 bg-white p-6 shadow-sm dark:border-[#2D3748] dark:bg-[#161C2A]">
+        <article data-agent-row="${agent.id}" class="rounded-3xl border border-[#697386]/20 bg-white/94 p-6 shadow-[0_25px_60px_-38px_rgba(10,37,64,0.8)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 ${getStatusHover(agent.estado)} dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_25px_60px_-38px_rgba(36,99,235,0.7)]">
           <div class="flex flex-wrap items-start justify-between gap-3">
             <div>
               <h2 class="text-xl font-black tracking-tight">${agent.nombre}</h2>
@@ -655,10 +689,10 @@ function renderAgentes() {
               ${dropdownButton(`agent-actions-${idx}`, `Acciones para ${agent.nombre}`)}
             </div>
           </div>
-          <div class="mt-4 rounded-xl bg-[#F8F9FA] p-3 dark:bg-[#0B0F17]">
+          <div class="mt-4 rounded-2xl bg-[#F8F9FA] p-3 dark:bg-[#050A14]">
             <button type="button" class="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2463EB]" data-skill-toggle="skills-${agent.id}" aria-expanded="false" aria-controls="skills-${agent.id}">
               Skills asociadas
-              <span aria-hidden="true">▾</span>
+              <span data-chevron aria-hidden="true" class="transition-transform duration-300">▾</span>
             </button>
             <div id="skills-${agent.id}" class="max-h-0 overflow-hidden transition-all duration-300">
               <ul class="mt-2 space-y-2 px-3 pb-2 text-sm text-[#697386] dark:text-[#9CA3AF]">
@@ -675,14 +709,14 @@ function renderAgentes() {
 function renderSkills() {
   return `
     <section class="space-y-4">
-      <article class="rounded-2xl border border-[#697386]/20 bg-white p-5 shadow-sm dark:border-[#2D3748] dark:bg-[#161C2A]">
+      <article class="rounded-3xl border border-[#697386]/20 bg-white/94 p-5 shadow-[0_25px_60px_-38px_rgba(10,37,64,0.8)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_26px_70px_-36px_rgba(10,37,64,0.85)] dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_25px_60px_-38px_rgba(36,99,235,0.7)]">
         <h2 class="text-xl font-black tracking-tight">Que es una skill en AgentHub?</h2>
         <p class="mt-2 text-sm text-[#697386] dark:text-[#9CA3AF]">Una skill es una capacidad modular que se adjunta a un agente para ampliar su comportamiento. Por ejemplo: navegar por la web, leer documentos o analizar logs operativos.</p>
       </article>
 
       <div class="grid grid-cols-1 gap-4 lg:grid-cols-2" aria-label="Catalogo de skills">
         ${SKILLS.map((skill, idx) => `
-          <article data-skill-row="${skill.id}" class="rounded-2xl border border-[#697386]/20 bg-white p-5 shadow-sm dark:border-[#2D3748] dark:bg-[#161C2A]">
+          <article data-skill-row="${skill.id}" class="rounded-3xl border border-[#697386]/20 bg-white/94 p-5 shadow-[0_25px_60px_-38px_rgba(10,37,64,0.8)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_26px_70px_-36px_rgba(10,37,64,0.85)] dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_25px_60px_-38px_rgba(36,99,235,0.7)]">
             <div class="flex items-start justify-between gap-3">
               <div>
                 <h3 class="text-lg font-black tracking-tight">${skill.nombre}</h3>
@@ -711,12 +745,12 @@ function renderContratos() {
   `).join("");
 
   return `
-    <section class="rounded-2xl border border-[#697386]/20 bg-white shadow-sm dark:border-[#2D3748] dark:bg-[#161C2A]">
+    <section class="rounded-3xl border border-[#697386]/20 bg-white/94 shadow-[0_25px_60px_-38px_rgba(10,37,64,0.8)] backdrop-blur-sm transition-all duration-300 hover:shadow-[0_26px_70px_-36px_rgba(10,37,64,0.85)] dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_25px_60px_-38px_rgba(36,99,235,0.7)]">
       <header class="border-b border-[#697386]/20 px-4 py-4 dark:border-[#2D3748] sm:px-6">
         <h2 class="text-xl font-black tracking-tight">Historial de contrataciones</h2>
       </header>
       <div class="overflow-x-auto">
-        <table class="min-w-full text-sm" aria-label="Tabla de contrataciones">
+        <table class="min-w-[980px] w-full text-sm" aria-label="Tabla de contrataciones">
           <thead class="bg-[#F8F9FA] text-left text-xs uppercase tracking-[0.14em] text-[#697386] dark:bg-[#0B0F17] dark:text-[#9CA3AF]">
             <tr>
               <th class="px-4 py-3">Cliente</th><th class="px-4 py-3">Agente</th><th class="px-4 py-3">Skills</th><th class="px-4 py-3">Fechas</th><th class="px-4 py-3">Importe total</th><th class="px-4 py-3 text-right">Acciones</th>
@@ -742,12 +776,12 @@ function renderErrores() {
   `).join("");
 
   return `
-    <section class="rounded-2xl border border-[#697386]/20 bg-white shadow-sm dark:border-[#2D3748] dark:bg-[#161C2A]">
+    <section class="rounded-3xl border border-[#697386]/20 bg-white/94 shadow-[0_25px_60px_-38px_rgba(10,37,64,0.8)] backdrop-blur-sm transition-all duration-300 hover:shadow-[0_26px_70px_-36px_rgba(10,37,64,0.85)] dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_25px_60px_-38px_rgba(36,99,235,0.7)]">
       <header class="border-b border-[#697386]/20 px-4 py-4 dark:border-[#2D3748] sm:px-6">
         <h2 class="text-xl font-black tracking-tight">Registro de errores de ejecucion</h2>
       </header>
       <div class="overflow-x-auto">
-        <table class="min-w-full text-sm" aria-label="Tabla de errores">
+        <table class="min-w-[980px] w-full text-sm" aria-label="Tabla de errores">
           <thead class="bg-[#F8F9FA] text-left text-xs uppercase tracking-[0.14em] text-[#697386] dark:bg-[#0B0F17] dark:text-[#9CA3AF]">
             <tr>
               <th class="px-4 py-3">Timestamp</th><th class="px-4 py-3">Agente</th><th class="px-4 py-3">Tipo</th><th class="px-4 py-3">Gravedad</th><th class="px-4 py-3">Descripcion</th><th class="px-4 py-3 text-right">Acciones</th>
@@ -1070,11 +1104,13 @@ function handleActions(pageKey) {
       if (skillsToggle instanceof HTMLElement) {
         const panelId = skillsToggle.getAttribute("data-skill-toggle");
         const panel = panelId ? document.getElementById(panelId) : null;
+        const chevron = skillsToggle.querySelector("[data-chevron]");
         if (panel) {
           const expanded = skillsToggle.getAttribute("aria-expanded") === "true";
           skillsToggle.setAttribute("aria-expanded", String(!expanded));
           panel.classList.toggle("max-h-0", expanded);
           panel.classList.toggle("max-h-40", !expanded);
+          if (chevron) chevron.classList.toggle("rotate-180", !expanded);
         }
       }
     }

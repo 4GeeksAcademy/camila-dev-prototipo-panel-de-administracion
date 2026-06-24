@@ -79,6 +79,12 @@ Los errores deben categorizarse visualmente por tipo o gravedad usando badges co
 Cada entrada tiene un dropdown de acciones con "Ver detalle" (abre un modal con la traza completa del error) y "Marcar como resuelto".
 Utiliza el componente modal reutilizable de las páginas anteriores y adapta su contenido a cada tipo de error.
 
+
+- Usa estas imágenes de referencia para el color y diseño de las cards, modales, gráficos, bordes, sombras, hover, estados activos, tipogafias y rellenos.
+![alt text](image.png)
+![alt text](image-1.png)
+
+
 Componentes reutilizables:
 -Barra superior
 -Sidebar
@@ -88,6 +94,7 @@ Componentes reutilizables:
 
 
 ## Contexto de la salida
+Sitio web responsivo
 Componentes reutilizables
 Archivos HTML semánticos vinculados entre sí
 Accesibilidad: Navegable por teclado y etiquetas ARIA
