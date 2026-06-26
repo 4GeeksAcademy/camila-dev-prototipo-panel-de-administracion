@@ -395,9 +395,9 @@ const DASHBOARD_METRICS = [
     titulo: "Ingresos totales generados (mes)",
     valor: "$284,900",
     tendencia: "+12.4%",
-    chip: "bg-cyan-100 text-cyan-700 dark:bg-cyan-500/25 dark:text-cyan-100",
-    colorA: "bg-cyan-400 dark:bg-cyan-300",
-    colorB: "bg-cyan-500 dark:bg-cyan-200",
+    chip: "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/25 dark:text-emerald-100",
+    colorA: "bg-emerald-400 dark:bg-emerald-400",
+    colorB: "bg-emerald-600 dark:bg-emerald-600",
     legendA: "Renovaciones",
     legendB: "Nuevos contratos"
   },
@@ -405,9 +405,9 @@ const DASHBOARD_METRICS = [
     titulo: "Perdida por descuentos y cupones",
     valor: "$18,320",
     tendencia: "-2.1%",
-    chip: "bg-violet-100 text-violet-700 dark:bg-violet-500/25 dark:text-violet-100",
-    colorA: "bg-violet-400 dark:bg-violet-300",
-    colorB: "bg-violet-600 dark:bg-violet-200",
+    chip: "bg-amber-100 text-amber-700 dark:bg-amber-500/25 dark:text-amber-100",
+    colorA: "bg-amber-400 dark:bg-amber-400",
+    colorB: "bg-amber-600 dark:bg-amber-600",
     legendA: "Descuento programado",
     legendB: "Promociones activas"
   },
@@ -415,9 +415,9 @@ const DASHBOARD_METRICS = [
     titulo: "Agentes activos en clientes",
     valor: "1,286",
     tendencia: "+8.2%",
-    chip: "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/25 dark:text-emerald-100",
-    colorA: "bg-emerald-400 dark:bg-emerald-300",
-    colorB: "bg-emerald-600 dark:bg-emerald-200",
+    chip: "bg-violet-100 text-violet-700 dark:bg-violet-500/25 dark:text-violet-100",
+    colorA: "bg-violet-400 dark:bg-violet-400",
+    colorB: "bg-violet-600 dark:bg-violet-600",
     legendA: "Alta semanal",
     legendB: "Base estable"
   },
@@ -425,9 +425,9 @@ const DASHBOARD_METRICS = [
     titulo: "Agentes marcados como fallando",
     valor: "47",
     tendencia: "+1.6%",
-    chip: "bg-amber-100 text-amber-700 dark:bg-amber-500/25 dark:text-amber-100",
-    colorA: "bg-amber-400 dark:bg-amber-300",
-    colorB: "bg-amber-600 dark:bg-amber-200",
+    chip: "bg-red-100 text-red-700 dark:bg-red-500/25 dark:text-red-100",
+    colorA: "bg-red-400 dark:bg-red-400",
+    colorB: "bg-red-600 dark:bg-red-600",
     legendA: "Incidentes recuperados",
     legendB: "Incidentes abiertos"
   }
@@ -435,13 +435,15 @@ const DASHBOARD_METRICS = [
 
 const WEEK_ACTIVITY_CLASSES = ["h-8", "h-14", "h-10", "h-16", "h-12", "h-20", "h-11"];
 const WEEK_ACTIVITY_COLORS = [
+  "bg-cyan-400 dark:bg-cyan-200",
   "bg-cyan-500 dark:bg-cyan-300",
   "bg-cyan-400 dark:bg-cyan-200",
-  "bg-violet-500 dark:bg-violet-300",
-  "bg-violet-400 dark:bg-violet-200",
-  "bg-emerald-500 dark:bg-emerald-300",
-  "bg-emerald-400 dark:bg-emerald-200",
-  "bg-amber-500 dark:bg-amber-300"
+  "bg-cyan-500 dark:bg-cyan-300",
+  "bg-cyan-400 dark:bg-cyan-200",
+  "bg-cyan-500 dark:bg-cyan-300",
+  "bg-cyan-400 dark:bg-cyan-200",
+  "bg-cyan-500 dark:bg-cyan-300",
+  "bg-cyan-400 dark:bg-cyan-200"
 ];
 
 function formatMoney(value) {
@@ -559,7 +561,7 @@ function renderLayout(pageKey, pageContent) {
             ${pageContent}
           </main>
 
-          <footer class="border-t border-[#697386]/20 bg-white/85 px-4 py-4 text-xs text-[#697386] backdrop-blur-xl transition-colors duration-500 ease-out dark:border-[#2D3748] dark:bg-[#091223]/85 dark:text-[#9CA3AF] sm:px-6 lg:px-10">
+          <footer class="border-t border-[#697386]/20 bg-white/85 px-4 py-6 text-xs text-[#697386] backdrop-blur-xl transition-colors duration-500 ease-out dark:border-[#2D3748] dark:bg-[#091223]/85 dark:text-[#9CA3AF] sm:px-6 lg:px-10">
             <p>Copyright 2026 AgentHub · <a href="#" class="font-semibold hover:text-[#1A1F26] dark:hover:text-white">Soporte</a> · <a href="#" class="font-semibold hover:text-[#1A1F26] dark:hover:text-white">Politicas Legales</a> · Creditos de Desarrollo: Equipo Frontend AgentHub</p>
           </footer>
         </div>
@@ -708,7 +710,7 @@ function renderAgentes() {
 
 function renderSkills() {
   return `
-    <section class="space-y-4">
+    <section class="space-y-6">
       <article class="rounded-3xl border border-[#697386]/20 bg-white/94 p-5 shadow-[0_25px_60px_-38px_rgba(10,37,64,0.8)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_26px_70px_-36px_rgba(10,37,64,0.85)] dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_25px_60px_-38px_rgba(36,99,235,0.7)]">
         <h2 class="text-xl font-black tracking-tight">Que es una skill en AgentHub?</h2>
         <p class="mt-2 text-sm text-[#697386] dark:text-[#9CA3AF]">Una skill es una capacidad modular que se adjunta a un agente para ampliar su comportamiento. Por ejemplo: navegar por la web, leer documentos o analizar logs operativos.</p>
@@ -716,8 +718,8 @@ function renderSkills() {
 
       <div class="grid grid-cols-1 gap-4 lg:grid-cols-2" aria-label="Catalogo de skills">
         ${SKILLS.map((skill, idx) => `
-          <article data-skill-row="${skill.id}" class="rounded-3xl border border-[#697386]/20 bg-white/94 p-5 shadow-[0_25px_60px_-38px_rgba(10,37,64,0.8)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_26px_70px_-36px_rgba(10,37,64,0.85)] dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_25px_60px_-38px_rgba(36,99,235,0.7)]">
-            <div class="flex items-start justify-between gap-3">
+          <article data-skill-row="${skill.id}" class="py-4 rounded-3xl border border-[#697386]/20 bg-white/94 p-5 shadow-[0_25px_60px_-38px_rgba(10,37,64,0.8)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_26px_70px_-36px_rgba(10,37,64,0.85)] dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_25px_60px_-38px_rgba(36,99,235,0.7)]">
+            <div class="flex items-start justify-between gap-3">v
               <div>
                 <h3 class="text-lg font-black tracking-tight">${skill.nombre}</h3>
                 <p class="mt-2 text-sm text-[#697386] dark:text-[#9CA3AF]">${skill.descripcion}</p>
