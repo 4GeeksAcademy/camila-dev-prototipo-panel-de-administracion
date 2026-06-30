@@ -268,8 +268,7 @@ const CONTRACTS = [
       { nombre: "Gestion de calendarios", precio: 190 }
     ],
     inicio: "2026-05-01",
-    fin: "2026-10-31",
-    total: 18100
+    fin: "2026-10-31"
   },
   {
     id: "c2",
@@ -280,8 +279,7 @@ const CONTRACTS = [
       { nombre: "Generacion de reportes", precio: 260 }
     ],
     inicio: "2026-02-01",
-    fin: "2026-08-01",
-    total: 14640
+    fin: "2026-08-01"
   },
   {
     id: "c3",
@@ -292,8 +290,7 @@ const CONTRACTS = [
       { nombre: "Navegacion web", precio: 280 }
     ],
     inicio: "2025-12-10",
-    fin: "2026-06-10",
-    total: 13980
+    fin: "2026-06-10"
   },
   {
     id: "c4",
@@ -304,8 +301,7 @@ const CONTRACTS = [
       { nombre: "Generacion de reportes", precio: 320 }
     ],
     inicio: "2026-03-12",
-    fin: "2027-03-12",
-    total: 22350
+    fin: "2027-03-12"
   },
   {
     id: "c5",
@@ -316,8 +312,7 @@ const CONTRACTS = [
       { nombre: "Navegacion web", precio: 290 }
     ],
     inicio: "2026-01-15",
-    fin: "2026-12-15",
-    total: 19820
+    fin: "2026-12-15"
   },
   {
     id: "c6",
@@ -328,8 +323,7 @@ const CONTRACTS = [
       { nombre: "Generacion de reportes", precio: 280 }
     ],
     inicio: "2026-04-20",
-    fin: "2026-10-20",
-    total: 12670
+    fin: "2026-10-20"
   }
 ];
 
@@ -483,7 +477,7 @@ function renderNav(activeKey, mobile = false) {
       ? "flex flex-col items-center justify-center gap-1 rounded-2xl px-1.5 py-2 text-[10px] font-semibold tracking-wide transition-colors duration-200 hover:bg-slate-100 dark:hover:bg-slate-800"
       : "flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-sm font-semibold";
     const state = active
-      ? "bg-gradient-to-r from-[#06264A] to-[#0A2540] text-white shadow-[0_10px_30px_-18px_rgba(10,37,64,0.95)] dark:from-[#1B4DD5] dark:to-[#2463EB] dark:shadow-[0_14px_36px_-20px_rgba(36,99,235,0.95)]"
+      ? "bg-gradient-to-r from-[#06264A] to-[#0A2540] text-white shadow-[0_2px_8px_-4px_rgba(10,37,64,0.35)] dark:from-[#1B4DD5] dark:to-[#2463EB] dark:shadow-[0_2px_10px_-5px_rgba(36,99,235,0.4)]"
       : "text-[#1A1F26] dark:text-[#D7DFEA]";
 
     return `
@@ -500,14 +494,14 @@ function renderLayout(pageKey, pageContent) {
   return `
     <div class="min-h-screen bg-[#EEF3FB] font-['Sora','Avenir_Next','Segoe_UI',sans-serif] text-[#1A1F26] transition-colors duration-500 ease-out dark:bg-[#050A14] dark:text-[#F3F4F6]">
       <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div class="absolute -left-20 -top-20 h-80 w-80 rounded-full bg-[#0A2540]/10 blur-3xl dark:bg-[#1B4DD5]/25"></div>
-        <div class="absolute bottom-[-8rem] right-[-5rem] h-[28rem] w-[28rem] rounded-full bg-[#0A2540]/10 blur-3xl dark:bg-[#06B6D4]/15"></div>
-        <div class="absolute left-1/2 top-1/3 h-44 w-44 -translate-x-1/2 rounded-full bg-[#2463EB]/10 blur-3xl dark:bg-[#2463EB]/20"></div>
+        <div class="absolute -left-20 -top-20 h-80 w-80 rounded-full bg-[#0A2540]/10 blur-xl dark:bg-[#1B4DD5]/25"></div>
+        <div class="absolute bottom-[-8rem] right-[-5rem] h-[28rem] w-[28rem] rounded-full bg-[#0A2540]/10 blur-md dark:bg-[#06B6D4]/15"></div>
+        <div class="absolute left-1/2 top-1/3 h-44 w-44 -translate-x-1/2 rounded-full bg-[#2463EB]/10 blur-md dark:bg-[#2463EB]/20"></div>
       </div>
 
-      <div class="flex pb-20 md:pb-0">
-        <aside class="hidden transition-colors duration-500 ease-out md:flex md:w-72 md:flex-col md:border-r md:border-[#697386]/20 md:bg-white/85 md:px-5 md:py-6 md:backdrop-blur-xl dark:md:border-[#2D3748] dark:md:bg-[#091223]/85" aria-label="Navegacion principal">
-          <div class="mb-6 rounded-3xl border border-[#697386]/20 bg-gradient-to-br from-[#0A2540] via-[#0A2540] to-[#154879] p-5 text-white shadow-[0_24px_42px_-26px_rgba(10,37,64,0.95)] dark:border-[#2D3748] dark:from-[#10244C] dark:via-[#123772] dark:to-[#2463EB]">
+      <div class="flex pb-20 lg:pb-0">
+        <aside class="hidden transition-colors duration-500 ease-out lg:flex lg:w-72 lg:flex-col lg:border-r lg:border-[#697386]/20 lg:bg-white/85 lg:px-5 lg:py-6 lg:backdrop-blur-sm dark:lg:border-[#2D3748] dark:lg:bg-[#091223]/85" aria-label="Navegacion principal">
+          <div class="mb-6 rounded-3xl border border-[#697386]/20 bg-gradient-to-br from-[#0A2540] via-[#0A2540] to-[#154879] p-5 text-white shadow-[0_2px_10px_-6px_rgba(10,37,64,0.5)] dark:border-[#2D3748] dark:from-[#10244C] dark:via-[#123772] dark:to-[#2463EB]">
             <p class="text-xs uppercase tracking-[0.2em] text-white/80">AgentHub SaaS</p>
             <p class="mt-2 text-xl font-black">Admin Panel</p>
             <p class="mt-1 text-sm text-cyan-100/80">Command Center</p>
@@ -515,7 +509,7 @@ function renderLayout(pageKey, pageContent) {
           <nav class="space-y-2" aria-label="Secciones del panel">
             ${renderNav(pageKey)}
           </nav>
-          <article class="mt-auto rounded-3xl border border-[#697386]/20 bg-[#0A2540] p-4 text-white shadow-[0_24px_45px_-30px_rgba(10,37,64,0.95)] dark:border-[#2D3748] dark:bg-[#0F1D37]">
+          <article class="mt-auto rounded-3xl border border-[#697386]/20 bg-[#0A2540] p-4 text-white shadow-[0_2px_10px_-6px_rgba(10,37,64,0.5)] dark:border-[#2D3748] dark:bg-[#0F1D37]">
             <p class="text-xs uppercase tracking-[0.2em] text-white/75">Manager</p>
             <p class="mt-2 text-2xl font-black leading-none">Camila</p>
             <p class="mt-1 text-sm text-slate-300">Performance Lead</p>
@@ -527,7 +521,7 @@ function renderLayout(pageKey, pageContent) {
         </aside>
 
         <div class="flex min-h-screen flex-1 flex-col">
-          <header class="border-b border-[#697386]/20 bg-white/85 px-4 py-4 backdrop-blur-xl transition-colors duration-500 ease-out dark:border-[#2D3748] dark:bg-[#091223]/85 sm:px-6 lg:px-10">
+          <header class="border-b border-[#697386]/20 bg-white/85 px-4 py-4 backdrop-blur-sm transition-colors duration-500 ease-out dark:border-[#2D3748] dark:bg-[#091223]/85 sm:px-6 lg:px-10">
             <div class="flex flex-wrap items-center justify-between gap-4">
               <div>
                 <p class="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#697386] dark:text-[#8EA5C7]">Performance Command Center</p>
@@ -557,27 +551,75 @@ function renderLayout(pageKey, pageContent) {
             </div>
           </header>
 
-          <main id="main-content" class="flex-1 px-4 py-7 sm:px-6 lg:px-10 lg:py-11" tabindex="-1">
+          <main id="main-content" class="mx-auto w-full flex-1 px-4 py-7 sm:px-6 lg:max-w-7xl lg:px-10 lg:py-11" tabindex="-1">
             ${pageContent}
           </main>
 
-          <footer class="border-t border-[#697386]/20 bg-white/85 px-4 py-6 text-xs text-[#697386] backdrop-blur-xl transition-colors duration-500 ease-out dark:border-[#2D3748] dark:bg-[#091223]/85 dark:text-[#9CA3AF] sm:px-6 lg:px-10">
+          <footer class="border-t border-[#697386]/20 bg-white/85 px-4 py-6 text-xs text-[#697386] backdrop-blur-sm transition-colors duration-500 ease-out dark:border-[#2D3748] dark:bg-[#091223]/85 dark:text-[#9CA3AF] sm:px-6 lg:px-10">
             <p>Copyright 2026 AgentHub · <a href="#" class="font-semibold hover:text-[#1A1F26] dark:hover:text-white">Soporte</a> · <a href="#" class="font-semibold hover:text-[#1A1F26] dark:hover:text-white">Politicas Legales</a> · Creditos de Desarrollo: Equipo Frontend AgentHub</p>
           </footer>
         </div>
       </div>
 
-      <nav class="fixed inset-x-0 bottom-0 z-40 border-t border-[#697386]/20 bg-white/95 px-2 py-2 backdrop-blur-xl transition-colors duration-500 ease-out dark:border-[#2D3748] dark:bg-[#091223]/90 md:hidden" aria-label="Navegacion inferior">
+      <nav class="fixed inset-x-0 bottom-0 z-40 border-t border-[#697386]/20 bg-white/95 px-2 py-2 backdrop-blur-sm transition-colors duration-500 ease-out dark:border-[#2D3748] dark:bg-[#091223]/90 lg:hidden" aria-label="Navegacion inferior">
         <div class="grid grid-cols-6 gap-1">${renderNav(pageKey, true)}</div>
       </nav>
 
       <div id="modal-overlay" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/55 p-4" role="presentation">
-        <div class="max-h-[90vh] w-full max-w-2xl overflow-auto rounded-3xl border border-[#697386]/30 bg-white p-6 shadow-[0_30px_90px_-35px_rgba(10,37,64,0.9)] dark:border-[#2D3748] dark:bg-[#111C33]" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="max-h-[90vh] w-full max-w-2xl overflow-auto rounded-3xl border border-[#697386]/30 bg-white p-6 shadow-[0_4px_20px_-12px_rgba(10,37,64,0.4)] dark:border-[#2D3748] dark:bg-[#111C33]" role="dialog" aria-modal="true" aria-labelledby="modal-title">
           <div class="mb-4 flex items-start justify-between gap-4">
             <h2 id="modal-title" class="text-lg font-bold tracking-tight"></h2>
             <button id="modal-close" type="button" class="rounded-md px-2 py-1 text-sm font-medium text-[#697386] hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2463EB] dark:text-[#9CA3AF] dark:hover:bg-slate-800" aria-label="Cerrar modal">Cerrar</button>
           </div>
-          <div id="modal-body" class="space-y-4 text-sm"></div>
+         <div id="modal-body" class="space-y-6 text-sm">
+
+  <section>
+    <h3 class="mb-3 text-base font-bold tracking-tight">
+      Informacion personal
+    </h3>
+
+    <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+
+      <p><strong>Nombre:</strong> <span id="modal-nombre"></span></p>
+
+      <p><strong>Apellido:</strong> <span id="modal-apellido"></span></p>
+
+      <p><strong>Fecha de nacimiento:</strong> <span id="modal-nacimiento"></span></p>
+
+      <p><strong>Direccion:</strong> <span id="modal-direccion"></span></p>
+
+      <p><strong>Email:</strong> <span id="modal-email"></span></p>
+
+      <p><strong>Telefono:</strong> <span id="modal-telefono"></span></p>
+
+      <p><strong>Ciudad:</strong> <span id="modal-ciudad"></span></p>
+
+      <p><strong>Pais:</strong> <span id="modal-pais"></span></p>
+
+    </div>
+  </section>
+
+  <section>
+    <h3 class="mb-3 text-base font-bold tracking-tight">
+      Informacion del plan
+    </h3>
+
+    <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+
+      <p><strong>Plan:</strong> <span id="modal-plan"></span></p>
+
+      <p><strong>Contratacion:</strong> <span id="modal-contratacion"></span></p>
+
+      <p><strong>Vencimiento:</strong> <span id="modal-vencimiento"></span></p>
+
+      <p><strong>Metodo de pago:</strong> <span id="modal-pago"></span></p>
+
+      <p><strong>Estado:</strong> <span id="modal-estado"></span></p>
+
+    </div>
+  </section>
+
+</div>
         </div>
       </div>
     </div>
@@ -586,8 +628,8 @@ function renderLayout(pageKey, pageContent) {
 
 function renderMetricCard(metric) {
   return `
-    <article class="group relative overflow-hidden rounded-3xl border border-[#697386]/20 bg-white p-6 shadow-[0_24px_55px_-35px_rgba(10,37,64,0.8)] transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_26px_70px_-36px_rgba(10,37,64,0.85)] dark:border-[#2D3748] dark:bg-[#0C162B] dark:shadow-[0_24px_55px_-35px_rgba(36,99,235,0.75)]">
-      <div aria-hidden="true" class="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[#0A2540]/10 blur-2xl dark:bg-[#2463EB]/15"></div>
+    <article class="group relative overflow-hidden rounded-3xl border border-[#697386]/20 bg-white p-6 shadow-[0_2px_12px_-8px_rgba(10,37,64,0.25)] transition-all duration-500 ease-out hover:-translate-y-0.5 hover:shadow-[0_4px_16px_-10px_rgba(10,37,64,0.3)] dark:border-[#2D3748] dark:bg-[#0C162B] dark:shadow-[0_2px_12px_-8px_rgba(36,99,235,0.25)]">
+      <div aria-hidden="true" class="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[#0A2540]/10 blur-md dark:bg-[#2463EB]/15"></div>
       <header class="mb-4 flex items-start justify-between gap-4">
         <h3 class="text-xs font-bold uppercase tracking-[0.16em] text-[#697386] dark:text-[#9CA3AF]">${metric.titulo}</h3>
         <span class="rounded-full px-3 py-1 text-xs font-semibold ${metric.chip}">${metric.tendencia}</span>
@@ -611,7 +653,7 @@ function renderDashboard() {
   return `
     <section class="space-y-6" aria-labelledby="dashboard-metricas">
       <h2 id="dashboard-metricas" class="sr-only">Metricas del dashboard</h2>
-      <section class="rounded-3xl border border-[#697386]/20 bg-white/92 p-5 backdrop-blur-sm shadow-[0_20px_50px_-40px_rgba(10,37,64,0.85)] dark:border-[#2D3748] dark:bg-[#0C162B]/95 sm:p-6">
+      <section class="rounded-3xl border border-[#697386]/20 bg-white/92 p-5 backdrop-blur-sm shadow-[0_2px_12px_-10px_rgba(10,37,64,0.3)] dark:border-[#2D3748] dark:bg-[#0C162B]/95 sm:p-6">
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#697386] dark:text-[#8EA5C7]">Buscar</p>
         <input type="search" aria-label="Buscar campana, creador o producto" placeholder="Campana, creador o producto" class="mt-3 w-full rounded-2xl border border-[#697386]/30 bg-[#F8F9FA] px-4 py-3 text-sm font-medium outline-none ring-0 placeholder:text-[#697386] focus-visible:border-[#2463EB] dark:border-[#2D3748] dark:bg-[#050A14] dark:placeholder:text-[#8EA5C7]" />
         <div class="mt-4 grid grid-cols-1 gap-3 md:grid-cols-3">
@@ -620,7 +662,7 @@ function renderDashboard() {
           <select class="rounded-xl border border-[#697386]/30 bg-white px-3 py-2.5 text-sm font-semibold dark:border-[#2D3748] dark:bg-[#050A14]" aria-label="Filtrar por fecha"><option>Ultimos 30 dias</option></select>
         </div>
       </section>
-      <div class="grid grid-cols-1 gap-5 lg:grid-cols-2">
+      <div class="grid grid-cols-1 gap-5 lg:grid-cols-2 xl:grid-cols-4">
         ${DASHBOARD_METRICS.map(renderMetricCard).join("")}
       </div>
 
@@ -649,24 +691,24 @@ function dropdownButton(id, label = "Abrir acciones") {
 function renderUsuarios() {
   const rows = USERS.map((user, idx) => `
     <tr data-user-row="${user.id}" class="border-b border-[#697386]/20 transition-all duration-200 ${getStatusHover(user.estado)} dark:border-[#2D3748]">
-      <td class="px-4 py-3 font-semibold">${user.nombre} ${user.apellido}</td>
-      <td class="px-4 py-3">${user.email}</td>
-      <td class="px-4 py-3">${user.planNombre}</td>
-      <td class="px-4 py-3"><span class="rounded-full px-2.5 py-1 text-xs font-semibold ${getStatusBadge(user.estado)}">${user.estado}</span></td>
-      <td class="px-4 py-3 text-right">${dropdownButton(`user-actions-${idx}`, `Acciones para ${user.nombre} ${user.apellido}`)}</td>
+      <td class="px-3 py-3 font-semibold whitespace-nowrap sm:px-4 lg:px-6 lg:py-4">${user.nombre} ${user.apellido}</td>
+      <td class="px-3 py-3 whitespace-nowrap sm:px-4 lg:px-6 lg:py-4">${user.email}</td>
+      <td class="px-3 py-3 whitespace-nowrap sm:px-4 lg:px-6 lg:py-4">${user.planNombre}</td>
+      <td class="px-3 py-3 whitespace-nowrap sm:px-4 lg:px-6 lg:py-4"><span class="rounded-full px-2.5 py-1 text-xs font-semibold ${getStatusBadge(user.estado)}">${user.estado}</span></td>
+      <td class="px-3 py-3 text-right whitespace-nowrap sm:px-4 lg:px-6 lg:py-4">${dropdownButton(`user-actions-${idx}`, `Acciones para ${user.nombre} ${user.apellido}`)}</td>
     </tr>
   `).join("");
 
   return `
-    <section class="rounded-3xl border border-[#697386]/20 bg-white/94 shadow-[0_25px_60px_-38px_rgba(10,37,64,0.8)] backdrop-blur-sm dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_25px_60px_-38px_rgba(36,99,235,0.7)]">
-      <header class="border-b border-[#697386]/20 px-4 py-4 dark:border-[#2D3748] sm:px-6">
-        <h2 class="text-xl font-black tracking-tight">Usuarios registrados</h2>
+    <section class="rounded-3xl border border-[#697386]/20 bg-white/94 shadow-[0_2px_12px_-10px_rgba(10,37,64,0.25)] backdrop-blur-sm transition-all duration-300 hover:shadow-[0_4px_16px_-12px_rgba(10,37,64,0.3)] dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_2px_12px_-10px_rgba(36,99,235,0.2)]">
+      <header class="border-b border-[#697386]/20 px-4 py-3 dark:border-[#2D3748] sm:px-6 lg:py-4">
+        <h2 class="text-lg font-black tracking-tight sm:text-xl">Usuarios registrados</h2>
       </header>
       <div class="overflow-x-auto">
-        <table class="min-w-[760px] w-full text-sm" aria-label="Tabla de usuarios">
+        <table class="min-w-[500px] w-full text-xs sm:text-sm" aria-label="Tabla de usuarios">
           <thead class="bg-[#F8F9FA] text-left text-xs uppercase tracking-[0.14em] text-[#697386] dark:bg-[#0B0F17] dark:text-[#9CA3AF]">
             <tr>
-              <th class="px-4 py-3">Nombre</th><th class="px-4 py-3">Email</th><th class="px-4 py-3">Plan</th><th class="px-4 py-3">Estado</th><th class="px-4 py-3 text-right">Acciones</th>
+              <th class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">Nombre</th><th class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">Email</th><th class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">Plan</th><th class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">Estado</th><th class="px-3 py-3 text-right sm:px-4 lg:px-6 lg:py-4">Acciones</th>
             </tr>
           </thead>
           <tbody>${rows}</tbody>
@@ -677,33 +719,41 @@ function renderUsuarios() {
 }
 
 function renderAgentes() {
+  const rows = AGENTS.map((agent, idx) => `
+    <tr data-agent-row="${agent.id}" class="border-b border-[#697386]/20 dark:border-[#2D3748]">
+      <td class="px-3 py-3 font-semibold sm:px-4 lg:px-6 lg:py-4">${agent.nombre}</td>
+      <td class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">${agent.propietario}</td>
+      <td class="px-3 py-3 max-w-[200px] sm:px-4 sm:max-w-none lg:px-6 lg:py-4">
+        <button type="button" class="flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2 text-left text-sm font-semibold hover:bg-[#F8F9FA] dark:hover:bg-[#0B0F17] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2463EB]" data-skill-toggle="skills-${agent.id}" aria-expanded="false" aria-controls="skills-${agent.id}">
+          <span class="truncate">${agent.skills.join(", ")}</span>
+          <span data-chevron aria-hidden="true" class="shrink-0 transition-transform duration-300">▾</span>
+        </button>
+        <div id="skills-${agent.id}" class="max-h-0 overflow-hidden transition-all duration-300">
+          <ul class="mt-2 space-y-1 px-3 pb-2 text-sm text-[#697386] dark:text-[#9CA3AF]">
+            ${agent.skills.map((skill) => `<li>- ${skill}</li>`).join("")}
+          </ul>
+        </div>
+      </td>
+      <td class="px-3 py-3 whitespace-nowrap sm:px-4 lg:px-6 lg:py-4"><span class="rounded-full px-2.5 py-1 text-xs font-semibold ${getStatusBadge(agent.estado)}">${agent.estado}</span></td>
+      <td class="px-3 py-3 whitespace-nowrap text-right sm:px-4 lg:px-6 lg:py-4">${dropdownButton(`agent-actions-${idx}`, `Acciones para ${agent.nombre}`)}</td>
+    </tr>
+  `).join("");
+
   return `
-    <section class="space-y-5" aria-label="Listado de agentes">
-      ${AGENTS.map((agent, idx) => `
-        <article data-agent-row="${agent.id}" class="rounded-3xl border border-[#697386]/20 bg-white/94 p-6 shadow-[0_25px_60px_-38px_rgba(10,37,64,0.8)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 ${getStatusHover(agent.estado)} dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_25px_60px_-38px_rgba(36,99,235,0.7)]">
-          <div class="flex flex-wrap items-start justify-between gap-3">
-            <div>
-              <h2 class="text-xl font-black tracking-tight">${agent.nombre}</h2>
-              <p class="text-sm text-[#697386] dark:text-[#9CA3AF]">Propietario: ${agent.propietario}</p>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="rounded-full px-2.5 py-1 text-xs font-semibold ${getStatusBadge(agent.estado)}">${agent.estado}</span>
-              ${dropdownButton(`agent-actions-${idx}`, `Acciones para ${agent.nombre}`)}
-            </div>
-          </div>
-          <div class="mt-4 rounded-2xl bg-[#F8F9FA] p-3 dark:bg-[#050A14]">
-            <button type="button" class="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2463EB]" data-skill-toggle="skills-${agent.id}" aria-expanded="false" aria-controls="skills-${agent.id}">
-              Skills asociadas
-              <span data-chevron aria-hidden="true" class="transition-transform duration-300">▾</span>
-            </button>
-            <div id="skills-${agent.id}" class="max-h-0 overflow-hidden transition-all duration-300">
-              <ul class="mt-2 space-y-2 px-3 pb-2 text-sm text-[#697386] dark:text-[#9CA3AF]">
-                ${agent.skills.map((skill) => `<li>- ${skill}</li>`).join("")}
-              </ul>
-            </div>
-          </div>
-        </article>
-      `).join("")}
+    <section class="rounded-3xl border border-[#697386]/20 bg-white/94 shadow-[0_2px_12px_-10px_rgba(10,37,64,0.25)] backdrop-blur-sm transition-all duration-300 hover:shadow-[0_4px_16px_-12px_rgba(10,37,64,0.3)] dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_2px_12px_-10px_rgba(36,99,235,0.2)]">
+      <header class="border-b border-[#697386]/20 px-4 py-3 dark:border-[#2D3748] sm:px-6 lg:py-4">
+        <h2 class="text-lg font-black tracking-tight sm:text-xl">Agentes registrados</h2>
+      </header>
+      <div class="overflow-x-auto">
+        <table class="min-w-[500px] w-full text-xs sm:text-sm" aria-label="Tabla de agentes">
+          <thead class="bg-[#F8F9FA] text-left text-xs uppercase tracking-[0.14em] text-[#697386] dark:bg-[#0B0F17] dark:text-[#9CA3AF]">
+            <tr>
+              <th class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">Agente</th><th class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">Propietario</th><th class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">Skills</th><th class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">Estado</th><th class="px-3 py-3 text-right sm:px-4 lg:px-6 lg:py-4">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
     </section>
   `;
 }
@@ -711,15 +761,15 @@ function renderAgentes() {
 function renderSkills() {
   return `
     <section class="space-y-6">
-      <article class="rounded-3xl border border-[#697386]/20 bg-white/94 p-5 shadow-[0_25px_60px_-38px_rgba(10,37,64,0.8)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_26px_70px_-36px_rgba(10,37,64,0.85)] dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_25px_60px_-38px_rgba(36,99,235,0.7)]">
+      <article class="rounded-3xl border border-[#697386]/20 bg-white/94 p-5 shadow-[0_2px_12px_-10px_rgba(10,37,64,0.25)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_-12px_rgba(10,37,64,0.3)] dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_2px_12px_-10px_rgba(36,99,235,0.2)]">
         <h2 class="text-xl font-black tracking-tight">Que es una skill en AgentHub?</h2>
         <p class="mt-2 text-sm text-[#697386] dark:text-[#9CA3AF]">Una skill es una capacidad modular que se adjunta a un agente para ampliar su comportamiento. Por ejemplo: navegar por la web, leer documentos o analizar logs operativos.</p>
       </article>
 
-      <div class="grid grid-cols-1 gap-4 lg:grid-cols-2" aria-label="Catalogo de skills">
+      <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
         ${SKILLS.map((skill, idx) => `
-          <article data-skill-row="${skill.id}" class="py-4 rounded-3xl border border-[#697386]/20 bg-white/94 p-5 shadow-[0_25px_60px_-38px_rgba(10,37,64,0.8)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_26px_70px_-36px_rgba(10,37,64,0.85)] dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_25px_60px_-38px_rgba(36,99,235,0.7)]">
-            <div class="flex items-start justify-between gap-3">v
+          <article data-skill-row="${skill.id}" class="py-4 rounded-3xl border border-[#697386]/20 bg-white/94 p-5 shadow-[0_2px_12px_-10px_rgba(10,37,64,0.25)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_-12px_rgba(10,37,64,0.3)] dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_2px_12px_-10px_rgba(36,99,235,0.2)]">
+            <div class="flex items-start justify-between gap-3">
               <div>
                 <h3 class="text-lg font-black tracking-tight">${skill.nombre}</h3>
                 <p class="mt-2 text-sm text-[#697386] dark:text-[#9CA3AF]">${skill.descripcion}</p>
@@ -735,27 +785,29 @@ function renderSkills() {
 }
 
 function renderContratos() {
+  const computeTotal = (contract) => contract.skills.reduce((sum, skill) => sum + skill.precio, 0);
+
   const rows = CONTRACTS.map((contract, idx) => `
     <tr data-contract-row="${contract.id}" class="border-b border-[#697386]/20 dark:border-[#2D3748]">
-      <td class="px-4 py-3 font-semibold">${contract.cliente}</td>
-      <td class="px-4 py-3">${contract.agente}</td>
-      <td class="px-4 py-3">${contract.skills.map((skill) => skill.nombre).join(", ")}</td>
-      <td class="px-4 py-3">${contract.inicio} - ${contract.fin}</td>
-      <td class="px-4 py-3 font-bold">${formatMoney(contract.total)}</td>
-      <td class="px-4 py-3 text-right">${dropdownButton(`contract-actions-${idx}`, `Acciones para contrato ${contract.id}`)}</td>
+      <td class="px-3 py-3 font-semibold sm:px-4 lg:px-6 lg:py-4">${contract.cliente}</td>
+      <td class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">${contract.agente}</td>
+      <td class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">${contract.skills.map((skill) => skill.nombre).join(", ")}</td>
+      <td class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">${contract.inicio} - ${contract.fin}</td>
+      <td class="px-3 py-3 font-bold whitespace-nowrap sm:px-4 lg:px-6 lg:py-4">${formatMoney(computeTotal(contract))}</td>
+      <td class="px-3 py-3 whitespace-nowrap text-right sm:px-4 lg:px-6 lg:py-4">${dropdownButton(`contract-actions-${idx}`, `Acciones para contrato ${contract.id}`)}</td>
     </tr>
   `).join("");
 
   return `
-    <section class="rounded-3xl border border-[#697386]/20 bg-white/94 shadow-[0_25px_60px_-38px_rgba(10,37,64,0.8)] backdrop-blur-sm transition-all duration-300 hover:shadow-[0_26px_70px_-36px_rgba(10,37,64,0.85)] dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_25px_60px_-38px_rgba(36,99,235,0.7)]">
-      <header class="border-b border-[#697386]/20 px-4 py-4 dark:border-[#2D3748] sm:px-6">
-        <h2 class="text-xl font-black tracking-tight">Historial de contrataciones</h2>
+    <section class="rounded-3xl border border-[#697386]/20 bg-white/94 shadow-[0_2px_12px_-10px_rgba(10,37,64,0.25)] backdrop-blur-sm transition-all duration-300 hover:shadow-[0_4px_16px_-12px_rgba(10,37,64,0.3)] dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_2px_12px_-10px_rgba(36,99,235,0.2)]">
+      <header class="border-b border-[#697386]/20 px-4 py-3 dark:border-[#2D3748] sm:px-6 lg:py-4">
+        <h2 class="text-lg font-black tracking-tight sm:text-xl">Historial de contrataciones</h2>
       </header>
       <div class="overflow-x-auto">
-        <table class="min-w-[980px] w-full text-sm" aria-label="Tabla de contrataciones">
+        <table class="min-w-[600px] w-full text-xs sm:text-sm" aria-label="Tabla de contrataciones">
           <thead class="bg-[#F8F9FA] text-left text-xs uppercase tracking-[0.14em] text-[#697386] dark:bg-[#0B0F17] dark:text-[#9CA3AF]">
             <tr>
-              <th class="px-4 py-3">Cliente</th><th class="px-4 py-3">Agente</th><th class="px-4 py-3">Skills</th><th class="px-4 py-3">Fechas</th><th class="px-4 py-3">Importe total</th><th class="px-4 py-3 text-right">Acciones</th>
+              <th class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">Cliente</th><th class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">Agente</th><th class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">Skills</th><th class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">Fechas</th><th class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">Importe total</th><th class="px-3 py-3 text-right sm:px-4 lg:px-6 lg:py-4">Acciones</th>
             </tr>
           </thead>
           <tbody>${rows}</tbody>
@@ -768,25 +820,25 @@ function renderContratos() {
 function renderErrores() {
   const rows = ERRORS.map((error, idx) => `
     <tr data-error-row="${error.id}" class="border-b border-[#697386]/20 dark:border-[#2D3748]">
-      <td class="px-4 py-3">${error.timestamp}</td>
-      <td class="px-4 py-3 font-semibold">${error.agente}</td>
-      <td class="px-4 py-3">${error.tipo}</td>
-      <td class="px-4 py-3"><span class="rounded-full px-2.5 py-1 text-xs font-semibold ${getStatusBadge(error.severidad)}">${error.severidad}</span></td>
-      <td class="px-4 py-3">${error.descripcion}</td>
-      <td class="px-4 py-3 text-right">${dropdownButton(`error-actions-${idx}`, `Acciones para error ${error.id}`)}</td>
+      <td class="px-3 py-3 whitespace-nowrap sm:px-4 lg:px-6 lg:py-4">${error.timestamp}</td>
+      <td class="px-3 py-3 font-semibold sm:px-4 lg:px-6 lg:py-4">${error.agente}</td>
+      <td class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">${error.tipo}</td>
+      <td class="px-3 py-3 whitespace-nowrap sm:px-4 lg:px-6 lg:py-4"><span class="rounded-full px-2.5 py-1 text-xs font-semibold ${getStatusBadge(error.severidad)}">${error.severidad}</span></td>
+      <td class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">${error.descripcion}</td>
+      <td class="px-3 py-3 whitespace-nowrap text-right sm:px-4 lg:px-6 lg:py-4">${dropdownButton(`error-actions-${idx}`, `Acciones para error ${error.id}`)}</td>
     </tr>
   `).join("");
 
   return `
-    <section class="rounded-3xl border border-[#697386]/20 bg-white/94 shadow-[0_25px_60px_-38px_rgba(10,37,64,0.8)] backdrop-blur-sm transition-all duration-300 hover:shadow-[0_26px_70px_-36px_rgba(10,37,64,0.85)] dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_25px_60px_-38px_rgba(36,99,235,0.7)]">
-      <header class="border-b border-[#697386]/20 px-4 py-4 dark:border-[#2D3748] sm:px-6">
-        <h2 class="text-xl font-black tracking-tight">Registro de errores de ejecucion</h2>
+    <section class="rounded-3xl border border-[#697386]/20 bg-white/94 shadow-[0_2px_12px_-10px_rgba(10,37,64,0.25)] backdrop-blur-sm transition-all duration-300 hover:shadow-[0_4px_16px_-12px_rgba(10,37,64,0.3)] dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_2px_12px_-10px_rgba(36,99,235,0.2)]">
+      <header class="border-b border-[#697386]/20 px-4 py-3 dark:border-[#2D3748] sm:px-6 lg:py-4">
+        <h2 class="text-lg font-black tracking-tight sm:text-xl">Registro de errores de ejecucion</h2>
       </header>
       <div class="overflow-x-auto">
-        <table class="min-w-[980px] w-full text-sm" aria-label="Tabla de errores">
+        <table class="min-w-[600px] w-full text-xs sm:text-sm" aria-label="Tabla de errores">
           <thead class="bg-[#F8F9FA] text-left text-xs uppercase tracking-[0.14em] text-[#697386] dark:bg-[#0B0F17] dark:text-[#9CA3AF]">
             <tr>
-              <th class="px-4 py-3">Timestamp</th><th class="px-4 py-3">Agente</th><th class="px-4 py-3">Tipo</th><th class="px-4 py-3">Gravedad</th><th class="px-4 py-3">Descripcion</th><th class="px-4 py-3 text-right">Acciones</th>
+              <th class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">Timestamp</th><th class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">Agente</th><th class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">Tipo</th><th class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">Gravedad</th><th class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">Descripcion</th><th class="px-3 py-3 text-right sm:px-4 lg:px-6 lg:py-4">Acciones</th>
             </tr>
           </thead>
           <tbody>${rows}</tbody>
@@ -805,18 +857,68 @@ function getPageContent(pageKey) {
   return renderErrores();
 }
 
-function openModal(title, bodyHtml) {
-  const overlay = document.getElementById("modal-overlay");
-  const titleEl = document.getElementById("modal-title");
-  const bodyEl = document.getElementById("modal-body");
-  if (!overlay || !titleEl || !bodyEl) return;
+const modalElements = {
+  overlay: null,
+  title: null,
 
-  titleEl.textContent = title;
-  bodyEl.innerHTML = bodyHtml;
-  overlay.classList.remove("hidden");
-  overlay.classList.add("flex");
-  const closeButton = document.getElementById("modal-close");
-  if (closeButton) closeButton.focus();
+  nombre: null,
+  apellido: null,
+  nacimiento: null,
+  direccion: null,
+  email: null,
+  telefono: null,
+  ciudad: null,
+  pais: null,
+
+  plan: null,
+  contratacion: null,
+  vencimiento: null,
+  pago: null,
+  estado: null
+};
+
+function cacheModalElements() {
+
+  modalElements.overlay = document.getElementById("modal-overlay");
+  modalElements.title = document.getElementById("modal-title");
+
+  modalElements.nombre = document.getElementById("modal-nombre");
+  modalElements.apellido = document.getElementById("modal-apellido");
+  modalElements.nacimiento = document.getElementById("modal-nacimiento");
+  modalElements.direccion = document.getElementById("modal-direccion");
+  modalElements.email = document.getElementById("modal-email");
+  modalElements.telefono = document.getElementById("modal-telefono");
+  modalElements.ciudad = document.getElementById("modal-ciudad");
+  modalElements.pais = document.getElementById("modal-pais");
+
+  modalElements.plan = document.getElementById("modal-plan");
+  modalElements.contratacion = document.getElementById("modal-contratacion");
+  modalElements.vencimiento = document.getElementById("modal-vencimiento");
+  modalElements.pago = document.getElementById("modal-pago");
+  modalElements.estado = document.getElementById("modal-estado");
+}
+
+function openUserModal(user) {
+
+  modalElements.title.textContent = "Informacion del Usuario";
+
+  modalElements.nombre.textContent = user.nombre;
+  modalElements.apellido.textContent = user.apellido;
+  modalElements.nacimiento.textContent = user.fechaNacimiento;
+  modalElements.direccion.textContent = user.direccion;
+  modalElements.email.textContent = user.email;
+  modalElements.telefono.textContent = user.telefono;
+  modalElements.ciudad.textContent = user.ciudad;
+  modalElements.pais.textContent = user.pais;
+
+  modalElements.plan.textContent = user.planNombre;
+  modalElements.contratacion.textContent = user.planContratacion;
+  modalElements.vencimiento.textContent = user.planVencimiento;
+  modalElements.pago.textContent = user.metodoPago;
+  modalElements.estado.textContent = user.planEstado;
+
+  modalElements.overlay.classList.remove("hidden");
+  modalElements.overlay.classList.add("flex");
 }
 
 function closeModal() {
@@ -824,6 +926,17 @@ function closeModal() {
   if (!overlay) return;
   overlay.classList.add("hidden");
   overlay.classList.remove("flex");
+}
+
+function openModal(title, bodyHTML) {
+  const overlay = document.getElementById("modal-overlay");
+  const titleEl = document.getElementById("modal-title");
+  const bodyEl = document.getElementById("modal-body");
+  if (!overlay || !titleEl || !bodyEl) return;
+  titleEl.textContent = title;
+  bodyEl.innerHTML = bodyHTML;
+  overlay.classList.remove("hidden");
+  overlay.classList.add("flex");
 }
 
 function closeAllDropdowns() {
@@ -835,61 +948,66 @@ function closeAllDropdowns() {
   });
 }
 
+const MENU_CONFIG = {
+  usuarios: {
+    data: USERS,
+    prefix: "user",
+    items: [
+      { attr: "view", label: "Ver detalle", className: "" },
+      { attr: "delete", label: "Eliminar", className: "text-red-600 hover:bg-red-50 dark:text-red-300 dark:hover:bg-red-500/10" }
+    ]
+  },
+  agentes: {
+    data: AGENTS,
+    prefix: "agent",
+    items: [
+      { attr: "view", label: "Ver detalle", className: "" },
+      { attr: "delete", label: "Eliminar", className: "text-red-600 hover:bg-red-50 dark:text-red-300 dark:hover:bg-red-500/10" }
+    ]
+  },
+  skills: {
+    data: SKILLS,
+    prefix: "skill",
+    items: [
+      { attr: "view", label: "Ver detalle", className: "" },
+      { attr: "delete", label: "Eliminar", className: "text-red-600 hover:bg-red-50 dark:text-red-300 dark:hover:bg-red-500/10" }
+    ]
+  },
+  contratos: {
+    data: CONTRACTS,
+    prefix: "contract",
+    items: [
+      { attr: "view", label: "Ver detalle", className: "" },
+      { attr: "delete", label: "Eliminar", className: "text-red-600 hover:bg-red-50 dark:text-red-300 dark:hover:bg-red-500/10" }
+    ]
+  },
+  errores: {
+    data: ERRORS,
+    prefix: "error",
+    items: [
+      { attr: "view", label: "Ver detalle", className: "" },
+      { attr: "resolve", label: "Marcar como resuelto", className: "text-emerald-700 hover:bg-emerald-50 dark:text-emerald-300 dark:hover:bg-emerald-500/10" }
+    ]
+  }
+};
+
+function buildMenuItems(item, idx, prefix, actions) {
+  return actions.map((action) => {
+    const baseClass = "block w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-100 dark:hover:bg-slate-800";
+    const cls = action.className ? `${baseClass} ${action.className}` : baseClass;
+    return `<button type="button" data-${prefix}-${action.attr}="${item.id}" class="${cls}" role="menuitem">${action.label}</button>`;
+  }).join("");
+}
+
 function populateMenus(pageKey) {
-  if (pageKey === "usuarios") {
-    USERS.forEach((user, idx) => {
-      const menu = document.getElementById(`user-actions-${idx}`);
-      if (!menu) return;
-      menu.innerHTML = `
-        <button type="button" data-user-view="${user.id}" class="block w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-100 dark:hover:bg-slate-800" role="menuitem">Ver detalle</button>
-        <button type="button" data-user-delete="${user.id}" class="block w-full rounded-lg px-3 py-2 text-left text-sm text-red-600 hover:bg-red-50 dark:text-red-300 dark:hover:bg-red-500/10" role="menuitem">Eliminar</button>
-      `;
+  const cfg = MENU_CONFIG[pageKey];
+  if (!cfg) return;
+  cfg.data.forEach((item, idx) => {
+    const menus = document.querySelectorAll(`[id="${CSS.escape(`${cfg.prefix}-actions-${idx}`)}"]`);
+    menus.forEach((menu) => {
+      menu.innerHTML = buildMenuItems(item, idx, cfg.prefix, cfg.items);
     });
-  }
-
-  if (pageKey === "agentes") {
-    AGENTS.forEach((agent, idx) => {
-      const menu = document.getElementById(`agent-actions-${idx}`);
-      if (!menu) return;
-      menu.innerHTML = `
-        <button type="button" data-agent-configure="${agent.id}" class="block w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-100 dark:hover:bg-slate-800" role="menuitem">Configurar</button>
-        <button type="button" data-agent-delete="${agent.id}" class="block w-full rounded-lg px-3 py-2 text-left text-sm text-red-600 hover:bg-red-50 dark:text-red-300 dark:hover:bg-red-500/10" role="menuitem">Eliminar</button>
-      `;
-    });
-  }
-
-  if (pageKey === "skills") {
-    SKILLS.forEach((skill, idx) => {
-      const menu = document.getElementById(`skill-actions-${idx}`);
-      if (!menu) return;
-      menu.innerHTML = `
-        <button type="button" data-skill-view="${skill.id}" class="block w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-100 dark:hover:bg-slate-800" role="menuitem">Ver detalle</button>
-        <button type="button" data-skill-delete="${skill.id}" class="block w-full rounded-lg px-3 py-2 text-left text-sm text-red-600 hover:bg-red-50 dark:text-red-300 dark:hover:bg-red-500/10" role="menuitem">Eliminar</button>
-      `;
-    });
-  }
-
-  if (pageKey === "contratos") {
-    CONTRACTS.forEach((contract, idx) => {
-      const menu = document.getElementById(`contract-actions-${idx}`);
-      if (!menu) return;
-      menu.innerHTML = `
-        <button type="button" data-contract-view="${contract.id}" class="block w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-100 dark:hover:bg-slate-800" role="menuitem">Ver detalle</button>
-        <button type="button" data-contract-delete="${contract.id}" class="block w-full rounded-lg px-3 py-2 text-left text-sm text-red-600 hover:bg-red-50 dark:text-red-300 dark:hover:bg-red-500/10" role="menuitem">Eliminar</button>
-      `;
-    });
-  }
-
-  if (pageKey === "errores") {
-    ERRORS.forEach((error, idx) => {
-      const menu = document.getElementById(`error-actions-${idx}`);
-      if (!menu) return;
-      menu.innerHTML = `
-        <button type="button" data-error-view="${error.id}" class="block w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-100 dark:hover:bg-slate-800" role="menuitem">Ver detalle</button>
-        <button type="button" data-error-resolve="${error.id}" class="block w-full rounded-lg px-3 py-2 text-left text-sm text-emerald-700 hover:bg-emerald-50 dark:text-emerald-300 dark:hover:bg-emerald-500/10" role="menuitem">Marcar como resuelto</button>
-      `;
-    });
-  }
+  });
 }
 
 function userDetailMarkup(user) {
@@ -922,6 +1040,10 @@ function userDetailMarkup(user) {
   `;
 }
 
+function computeTotal(contract) {
+  return contract.skills.reduce((sum, skill) => sum + skill.precio, 0);
+}
+
 function contractDetailMarkup(contract) {
   return `
     <section class="space-y-4">
@@ -934,7 +1056,27 @@ function contractDetailMarkup(contract) {
           ${contract.skills.map((skill) => `<li class="flex items-center justify-between rounded-lg bg-[#F8F9FA] px-3 py-2 dark:bg-[#0B0F17]"><span>${skill.nombre}</span><span class="font-semibold">${formatMoney(skill.precio)}</span></li>`).join("")}
         </ul>
       </section>
-      <p class="text-base font-bold">Importe total pagado: ${formatMoney(contract.total)}</p>
+      <p class="text-base font-bold">Importe total pagado: ${formatMoney(computeTotal(contract))}</p>
+    </section>
+  `;
+}
+
+function agentDetailMarkup(agent) {
+  return `
+    <section class="space-y-5">
+      <section>
+        <h3 class="mb-3 text-base font-bold tracking-tight">Informacion del agente</h3>
+        <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+          <p><strong>Nombre:</strong> ${agent.nombre}</p>
+          <p><strong>Propietario:</strong> ${agent.propietario}</p>
+          <p><strong>Estado:</strong> <span class="rounded-full px-2.5 py-1 text-xs font-semibold ${getStatusBadge(agent.estado)}">${agent.estado}</span></p>
+          <p><strong>Skills:</strong> ${agent.skills.join(", ")}</p>
+        </div>
+      </section>
+      <section>
+        <h3 class="mb-3 text-base font-bold tracking-tight">Prompt del sistema</h3>
+        <pre class="overflow-auto rounded-xl bg-[#F8F9FA] p-4 text-sm dark:bg-[#0B0F17]">${agent.prompt}</pre>
+      </section>
     </section>
   `;
 }
@@ -976,8 +1118,9 @@ function handleActions(pageKey) {
 
     const toggle = target.closest("[data-dropdown-toggle]");
     if (toggle instanceof HTMLElement) {
+      event.stopPropagation();
       const menuId = toggle.getAttribute("data-dropdown-toggle");
-      const menu = menuId ? document.getElementById(menuId) : null;
+      const menu = menuId ? toggle.parentElement.querySelector(`[id="${CSS.escape(menuId)}"]`) : null;
       if (menu) {
         const willOpen = menu.classList.contains("hidden");
         closeAllDropdowns();
@@ -995,109 +1138,49 @@ function handleActions(pageKey) {
       return;
     }
 
-    if (target.closest("[data-user-view]")) {
-      const id = target.closest("[data-user-view]")?.getAttribute("data-user-view");
-      const user = USERS.find((item) => item.id === id);
-      if (user) openModal("Informacion del Usuario", userDetailMarkup(user));
-      closeAllDropdowns();
-      return;
-    }
-
-    if (target.closest("[data-user-delete]")) {
-      const id = target.closest("[data-user-delete]")?.getAttribute("data-user-delete");
-      const row = id ? document.querySelector(`[data-user-row='${id}']`) : null;
-      if (row) row.remove();
-      closeAllDropdowns();
-      return;
-    }
-
-    if (target.closest("[data-agent-configure]")) {
-      const id = target.closest("[data-agent-configure]")?.getAttribute("data-agent-configure");
-      const agent = AGENTS.find((item) => item.id === id);
-      if (agent) {
-        openModal(
-          `Prompt del agente: ${agent.nombre}`,
-          `<section class="space-y-3"><p class="text-sm text-[#697386] dark:text-[#9CA3AF]">Configuracion del sistema del agente seleccionado.</p><pre class="overflow-auto rounded-xl bg-[#F8F9FA] p-4 text-sm dark:bg-[#0B0F17]">${agent.prompt}</pre></section>`
-        );
-      }
-      closeAllDropdowns();
-      return;
-    }
-
-    if (target.closest("[data-agent-delete]")) {
-      const id = target.closest("[data-agent-delete]")?.getAttribute("data-agent-delete");
-      const row = id ? document.querySelector(`[data-agent-row='${id}']`) : null;
-      if (row) row.remove();
-      closeAllDropdowns();
-      return;
-    }
-
-    if (target.closest("[data-skill-view]")) {
-      const id = target.closest("[data-skill-view]")?.getAttribute("data-skill-view");
-      const skill = SKILLS.find((item) => item.id === id);
-      if (skill) {
-        openModal(
-          `Detalle de skill: ${skill.nombre}`,
-          `<section class="space-y-3"><p>${skill.descripcion}</p><p><strong>Agentes con esta skill:</strong> ${skill.habilitadaEn}</p><p><strong>Detalle:</strong> ${skill.detalle}</p></section>`
-        );
-      }
-      closeAllDropdowns();
-      return;
-    }
-
-    if (target.closest("[data-skill-delete]")) {
-      const id = target.closest("[data-skill-delete]")?.getAttribute("data-skill-delete");
-      const row = id ? document.querySelector(`[data-skill-row='${id}']`) : null;
-      if (row) row.remove();
-      closeAllDropdowns();
-      return;
-    }
-
-    if (target.closest("[data-contract-view]")) {
-      const id = target.closest("[data-contract-view]")?.getAttribute("data-contract-view");
-      const contract = CONTRACTS.find((item) => item.id === id);
-      if (contract) openModal(`Detalle del contrato ${contract.id.toUpperCase()}`, contractDetailMarkup(contract));
-      closeAllDropdowns();
-      return;
-    }
-
-    if (target.closest("[data-contract-delete]")) {
-      const id = target.closest("[data-contract-delete]")?.getAttribute("data-contract-delete");
-      const row = id ? document.querySelector(`[data-contract-row='${id}']`) : null;
-      if (row) row.remove();
-      closeAllDropdowns();
-      return;
-    }
-
-    if (target.closest("[data-error-view]")) {
-      const id = target.closest("[data-error-view]")?.getAttribute("data-error-view");
-      const error = ERRORS.find((item) => item.id === id);
-      if (error) {
-        openModal(
-          `Traza completa: ${error.agente}`,
-          `<section class="space-y-3"><p><strong>Tipo:</strong> ${error.tipo}</p><p><strong>Descripcion:</strong> ${error.descripcion}</p><pre class="overflow-auto rounded-xl bg-[#F8F9FA] p-4 text-sm dark:bg-[#0B0F17]">${error.traza}</pre></section>`
-        );
-      }
-      closeAllDropdowns();
-      return;
-    }
-
-    if (target.closest("[data-error-resolve]")) {
-      const id = target.closest("[data-error-resolve]")?.getAttribute("data-error-resolve");
-      const row = id ? document.querySelector(`[data-error-row='${id}']`) : null;
-      if (row) {
-        row.classList.add("opacity-55");
-        const badge = row.querySelector("td:nth-child(4) span");
-        if (badge) {
-          badge.textContent = "Resuelto";
-          badge.className = "rounded-full px-2.5 py-1 text-xs font-semibold bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-200";
+    const ENTITY_ACTIONS = [
+      { prefix: "user",     selector: "view",    data: USERS,     act: (u) => openUserModal(u) },
+      { prefix: "agent",    selector: "view",    data: AGENTS,    act: (a) => openModal(`Detalle del agente: ${a.nombre}`, agentDetailMarkup(a)) },
+      { prefix: "skill",    selector: "view",    data: SKILLS,    act: (s) => openModal(`Detalle de skill: ${s.nombre}`, `<section class="space-y-3"><p>${s.descripcion}</p><p><strong>Agentes con esta skill:</strong> ${s.habilitadaEn}</p><p><strong>Detalle:</strong> ${s.detalle}</p></section>`) },
+      { prefix: "contract", selector: "view",    data: CONTRACTS, act: (c) => openModal(`Detalle del contrato ${c.id.toUpperCase()}`, contractDetailMarkup(c)) },
+      { prefix: "error",    selector: "view",    data: ERRORS,    act: (e) => openModal(`Traza completa: ${e.agente}`, `<section class="space-y-3"><p><strong>Tipo:</strong> ${e.tipo}</p><p><strong>Descripcion:</strong> ${e.descripcion}</p><pre class="overflow-auto rounded-xl bg-[#F8F9FA] p-4 text-sm dark:bg-[#0B0F17]">${e.traza}</pre></section>`) },
+      { prefix: "user",     selector: "delete",  act: (id) => document.querySelector(`[data-user-row='${id}']`)?.remove() },
+      { prefix: "agent",    selector: "delete",  act: (id) => document.querySelector(`[data-agent-row='${id}']`)?.remove() },
+      { prefix: "skill",    selector: "delete",  act: (id) => document.querySelector(`[data-skill-row='${id}']`)?.remove() },
+      { prefix: "contract", selector: "delete",  act: (id) => document.querySelector(`[data-contract-row='${id}']`)?.remove() },
+      { prefix: "error",    selector: "delete",  act: (id) => document.querySelector(`[data-error-row='${id}']`)?.remove() },
+      { prefix: "error",    selector: "resolve", act: (id) => {
+        const row = document.querySelector(`[data-error-row='${id}']`);
+        if (row) {
+          row.classList.add("opacity-55");
+          const badge = row.querySelector("td:nth-child(4) span");
+          if (badge) {
+            badge.textContent = "Resuelto";
+            badge.className = "rounded-full px-2.5 py-1 text-xs font-semibold bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-200";
+          }
         }
+      }},
+    ];
+
+    for (const { prefix, selector, data, act } of ENTITY_ACTIONS) {
+      const btn = target.closest(`[data-${prefix}-${selector}]`);
+      if (btn) {
+        const id = btn.getAttribute(`data-${prefix}-${selector}`);
+        if (data) {
+          const item = data.find((e) => e.id === id);
+          if (item) act(item);
+        } else {
+          act(id);
+        }
+        closeAllDropdowns();
+        return;
       }
-      closeAllDropdowns();
-      return;
     }
 
-    if (!target.closest("[data-dropdown-toggle]") && !target.closest("[role='menu']")) {
+    const isInsideDropdown = target.closest("[role='menu']") !== null;
+    const isToggleButton = target.closest("[data-dropdown-toggle]") !== null;
+
+    if (!isToggleButton && !isInsideDropdown) {
       closeAllDropdowns();
     }
 
@@ -1134,6 +1217,7 @@ function bootstrapPanel() {
 
   app.innerHTML = renderLayout(pageKey, getPageContent(pageKey));
   populateMenus(pageKey);
+  cacheModalElements();
   initTheme();
   handleActions(pageKey);
 }
