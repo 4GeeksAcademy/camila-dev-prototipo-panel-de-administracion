@@ -464,8 +464,14 @@ function getStatusBadge(status) {
 
 function getStatusHover(status) {
   const lower = status.toLowerCase();
-  if (lower.includes("inact") || lower.includes("fall")) {
+  if (lower.includes("fall") || lower.includes("alta")) {
     return "hover:bg-red-50/90 hover:shadow-[inset_0_0_0_1px_rgba(239,68,68,0.28)] dark:hover:bg-red-500/10";
+  }
+  if (lower.includes("inact") || lower.includes("media")) {
+    return "hover:bg-amber-50/90 hover:shadow-[inset_0_0_0_1px_rgba(245,158,11,0.28)] dark:hover:bg-amber-500/10";
+  }
+  if (lower.includes("baja") || lower.includes("activ")) {
+    return "hover:bg-emerald-50/90 hover:shadow-[inset_0_0_0_1px_rgba(16,185,129,0.28)] dark:hover:bg-emerald-500/10";
   }
   return "hover:bg-cyan-50/90 hover:shadow-[inset_0_0_0_1px_rgba(34,211,238,0.35)] dark:hover:bg-cyan-500/10";
 }
@@ -475,7 +481,7 @@ function renderNav(activeKey, mobile = false) {
     const active = item.key === activeKey;
     const base = mobile
       ? "flex flex-col items-center justify-center gap-1 rounded-2xl px-1.5 py-2 text-[10px] font-semibold tracking-wide transition-colors duration-200 hover:bg-slate-100 dark:hover:bg-slate-800"
-      : "flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-sm font-semibold";
+      : "flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-sm font-semibold transition-colors duration-200 hover:border-blue-200/50 hover:bg-blue-50/70 dark:hover:border-blue-500/20 dark:hover:bg-blue-500/10";
     const state = active
       ? "bg-gradient-to-r from-[#06264A] to-[#0A2540] text-white shadow-[0_2px_8px_-4px_rgba(10,37,64,0.35)] dark:from-[#1B4DD5] dark:to-[#2463EB] dark:shadow-[0_2px_10px_-5px_rgba(36,99,235,0.4)]"
       : "text-[#1A1F26] dark:text-[#D7DFEA]";
@@ -672,7 +678,7 @@ function renderUsuarios() {
 
 function renderAgentes() {
   const rows = AGENTS.map((agent, idx) => `
-    <tr data-agent-row="${agent.id}" class="border-b border-[#697386]/20 dark:border-[#2D3748]">
+    <tr data-agent-row="${agent.id}" class="border-b border-[#697386]/20 transition-all duration-200 ${getStatusHover(agent.estado)} dark:border-[#2D3748]">
       <td class="px-3 py-3 font-semibold sm:px-4 lg:px-6 lg:py-4">${agent.nombre}</td>
       <td class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">${agent.propietario}</td>
       <td class="px-3 py-3 max-w-[200px] sm:px-4 sm:max-w-none lg:px-6 lg:py-4">
@@ -714,7 +720,7 @@ function renderSkills() {
   return `
     <section class="space-y-6">
       <article class="rounded-3xl border border-[#697386]/20 bg-white/94 p-5 shadow-[0_2px_12px_-10px_rgba(10,37,64,0.25)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_-12px_rgba(10,37,64,0.3)] dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_2px_12px_-10px_rgba(36,99,235,0.2)]">
-        <h2 class="text-xl font-black tracking-tight">Que es una skill en AgentHub?</h2>
+        <h2 class="text-xl font-black leading-relaxed tracking-wide">Que es una skill en AgentHub?</h2>
         <p class="mt-2 text-sm text-[#697386] dark:text-[#9CA3AF]">Una skill es una capacidad modular que se adjunta a un agente para ampliar su comportamiento. Por ejemplo: navegar por la web, leer documentos o analizar logs operativos.</p>
       </article>
 
@@ -723,7 +729,7 @@ function renderSkills() {
           <article data-skill-row="${skill.id}" class="py-4 rounded-3xl border border-[#697386]/20 bg-white/94 p-5 shadow-[0_2px_12px_-10px_rgba(10,37,64,0.25)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_-12px_rgba(10,37,64,0.3)] dark:border-[#2D3748] dark:bg-[#0C162B]/95 dark:shadow-[0_2px_12px_-10px_rgba(36,99,235,0.2)]">
             <div class="flex items-start justify-between gap-3">
               <div>
-                <h3 class="text-lg font-black tracking-tight">${skill.nombre}</h3>
+                <h3 class="text-lg font-black leading-relaxed tracking-wide">${skill.nombre}</h3>
                 <p class="mt-2 text-sm text-[#697386] dark:text-[#9CA3AF]">${skill.descripcion}</p>
                 <p class="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-[#697386] dark:text-[#9CA3AF]">Habilitada en ${skill.habilitadaEn} agentes</p>
               </div>
@@ -740,7 +746,7 @@ function renderContratos() {
   const computeTotal = (contract) => contract.skills.reduce((sum, skill) => sum + skill.precio, 0);
 
   const rows = CONTRACTS.map((contract, idx) => `
-    <tr data-contract-row="${contract.id}" class="border-b border-[#697386]/20 dark:border-[#2D3748]">
+    <tr data-contract-row="${contract.id}" class="border-b border-[#697386]/20 transition-all duration-200 hover:bg-slate-50/80 hover:shadow-[inset_0_0_0_1px_rgba(100,116,139,0.15)] dark:border-[#2D3748] dark:hover:bg-slate-800/30">
       <td class="px-3 py-3 font-semibold sm:px-4 lg:px-6 lg:py-4">${contract.cliente}</td>
       <td class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">${contract.agente}</td>
       <td class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">${contract.skills.map((skill) => skill.nombre).join(", ")}</td>
@@ -771,7 +777,7 @@ function renderContratos() {
 
 function renderErrores() {
   const rows = ERRORS.map((error, idx) => `
-    <tr data-error-row="${error.id}" class="border-b border-[#697386]/20 dark:border-[#2D3748]">
+    <tr data-error-row="${error.id}" class="border-b border-[#697386]/20 transition-all duration-200 ${getStatusHover(error.severidad)} dark:border-[#2D3748]">
       <td class="px-3 py-3 whitespace-nowrap sm:px-4 lg:px-6 lg:py-4">${error.timestamp}</td>
       <td class="px-3 py-3 font-semibold sm:px-4 lg:px-6 lg:py-4">${error.agente}</td>
       <td class="px-3 py-3 sm:px-4 lg:px-6 lg:py-4">${error.tipo}</td>
