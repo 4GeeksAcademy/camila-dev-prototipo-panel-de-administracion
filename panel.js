@@ -565,61 +565,13 @@ function renderLayout(pageKey, pageContent) {
         <div class="grid grid-cols-6 gap-1">${renderNav(pageKey, true)}</div>
       </nav>
 
-      <div id="modal-overlay" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/55 p-4" role="presentation">
-        <div class="max-h-[90vh] w-full max-w-2xl overflow-auto rounded-3xl border border-[#697386]/30 bg-white p-6 shadow-[0_4px_20px_-12px_rgba(10,37,64,0.4)] dark:border-[#2D3748] dark:bg-[#111C33]" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-          <div class="mb-4 flex items-start justify-between gap-4">
-            <h2 id="modal-title" class="text-lg font-bold tracking-tight"></h2>
-            <button id="modal-close" type="button" class="rounded-md px-2 py-1 text-sm font-medium text-[#697386] hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2463EB] dark:text-[#9CA3AF] dark:hover:bg-slate-800" aria-label="Cerrar modal">Cerrar</button>
+      <div id="modal-overlay" class="fixed inset-0 z-50 flex items-center justify-center bg-black/55 p-3 backdrop-blur-sm transition-all duration-200 sm:p-4" style="opacity:0;visibility:hidden;pointer-events:none" role="presentation">
+        <div class="max-h-[90vh] w-full max-w-xl scale-[0.97] overflow-auto rounded-2xl border border-[#697386]/30 bg-white p-4 shadow-[0_8px_30px_-8px_rgba(0,0,0,0.3)] transition-all duration-200 sm:max-w-2xl sm:rounded-3xl sm:p-6 md:max-w-3xl lg:p-8 dark:border-[#2D3748] dark:bg-[#111C33] dark:shadow-[0_8px_30px_-8px_rgba(36,99,235,0.25)]" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+          <div class="mb-4 flex items-start justify-between gap-4 sm:mb-5 lg:mb-6">
+            <h2 id="modal-title" class="text-base font-bold tracking-tight sm:text-lg lg:text-2xl"></h2>
+            <button id="modal-close" type="button" class="shrink-0 rounded-lg px-3 py-1.5 text-xs font-semibold text-[#697386] transition-colors hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2463EB] sm:text-sm dark:text-[#9CA3AF] dark:hover:bg-slate-800" aria-label="Cerrar modal">Cerrar ✕</button>
           </div>
-         <div id="modal-body" class="space-y-6 text-sm">
-
-  <section>
-    <h3 class="mb-3 text-base font-bold tracking-tight">
-      Informacion personal
-    </h3>
-
-    <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
-
-      <p><strong>Nombre:</strong> <span id="modal-nombre"></span></p>
-
-      <p><strong>Apellido:</strong> <span id="modal-apellido"></span></p>
-
-      <p><strong>Fecha de nacimiento:</strong> <span id="modal-nacimiento"></span></p>
-
-      <p><strong>Direccion:</strong> <span id="modal-direccion"></span></p>
-
-      <p><strong>Email:</strong> <span id="modal-email"></span></p>
-
-      <p><strong>Telefono:</strong> <span id="modal-telefono"></span></p>
-
-      <p><strong>Ciudad:</strong> <span id="modal-ciudad"></span></p>
-
-      <p><strong>Pais:</strong> <span id="modal-pais"></span></p>
-
-    </div>
-  </section>
-
-  <section>
-    <h3 class="mb-3 text-base font-bold tracking-tight">
-      Informacion del plan
-    </h3>
-
-    <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
-
-      <p><strong>Plan:</strong> <span id="modal-plan"></span></p>
-
-      <p><strong>Contratacion:</strong> <span id="modal-contratacion"></span></p>
-
-      <p><strong>Vencimiento:</strong> <span id="modal-vencimiento"></span></p>
-
-      <p><strong>Metodo de pago:</strong> <span id="modal-pago"></span></p>
-
-      <p><strong>Estado:</strong> <span id="modal-estado"></span></p>
-
-    </div>
-  </section>
-
-</div>
+         <div id="modal-body" class="space-y-4 text-xs sm:space-y-5 sm:text-sm lg:space-y-6 lg:text-base"></div>
         </div>
       </div>
     </div>
@@ -662,7 +614,7 @@ function renderDashboard() {
           <select class="rounded-xl border border-[#697386]/30 bg-white px-3 py-2.5 text-sm font-semibold dark:border-[#2D3748] dark:bg-[#050A14]" aria-label="Filtrar por fecha"><option>Ultimos 30 dias</option></select>
         </div>
       </section>
-      <div class="grid grid-cols-1 gap-5 lg:grid-cols-2 xl:grid-cols-4">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
         ${DASHBOARD_METRICS.map(renderMetricCard).join("")}
       </div>
 
@@ -857,95 +809,44 @@ function getPageContent(pageKey) {
   return renderErrores();
 }
 
-const modalElements = {
-  overlay: null,
-  title: null,
+// ─── Cached DOM refs ───────────────────────────────────────────────
+let $modal, $modalTitle, $modalBody;
+let activeDropdown = null;
 
-  nombre: null,
-  apellido: null,
-  nacimiento: null,
-  direccion: null,
-  email: null,
-  telefono: null,
-  ciudad: null,
-  pais: null,
-
-  plan: null,
-  contratacion: null,
-  vencimiento: null,
-  pago: null,
-  estado: null
-};
-
-function cacheModalElements() {
-
-  modalElements.overlay = document.getElementById("modal-overlay");
-  modalElements.title = document.getElementById("modal-title");
-
-  modalElements.nombre = document.getElementById("modal-nombre");
-  modalElements.apellido = document.getElementById("modal-apellido");
-  modalElements.nacimiento = document.getElementById("modal-nacimiento");
-  modalElements.direccion = document.getElementById("modal-direccion");
-  modalElements.email = document.getElementById("modal-email");
-  modalElements.telefono = document.getElementById("modal-telefono");
-  modalElements.ciudad = document.getElementById("modal-ciudad");
-  modalElements.pais = document.getElementById("modal-pais");
-
-  modalElements.plan = document.getElementById("modal-plan");
-  modalElements.contratacion = document.getElementById("modal-contratacion");
-  modalElements.vencimiento = document.getElementById("modal-vencimiento");
-  modalElements.pago = document.getElementById("modal-pago");
-  modalElements.estado = document.getElementById("modal-estado");
-}
-
-function openUserModal(user) {
-
-  modalElements.title.textContent = "Informacion del Usuario";
-
-  modalElements.nombre.textContent = user.nombre;
-  modalElements.apellido.textContent = user.apellido;
-  modalElements.nacimiento.textContent = user.fechaNacimiento;
-  modalElements.direccion.textContent = user.direccion;
-  modalElements.email.textContent = user.email;
-  modalElements.telefono.textContent = user.telefono;
-  modalElements.ciudad.textContent = user.ciudad;
-  modalElements.pais.textContent = user.pais;
-
-  modalElements.plan.textContent = user.planNombre;
-  modalElements.contratacion.textContent = user.planContratacion;
-  modalElements.vencimiento.textContent = user.planVencimiento;
-  modalElements.pago.textContent = user.metodoPago;
-  modalElements.estado.textContent = user.planEstado;
-
-  modalElements.overlay.classList.remove("hidden");
-  modalElements.overlay.classList.add("flex");
-}
-
-function closeModal() {
-  const overlay = document.getElementById("modal-overlay");
-  if (!overlay) return;
-  overlay.classList.add("hidden");
-  overlay.classList.remove("flex");
+function cacheDOM() {
+  $modal = document.getElementById("modal-overlay");
+  $modalTitle = document.getElementById("modal-title");
+  $modalBody = document.getElementById("modal-body");
 }
 
 function openModal(title, bodyHTML) {
-  const overlay = document.getElementById("modal-overlay");
-  const titleEl = document.getElementById("modal-title");
-  const bodyEl = document.getElementById("modal-body");
-  if (!overlay || !titleEl || !bodyEl) return;
-  titleEl.textContent = title;
-  bodyEl.innerHTML = bodyHTML;
-  overlay.classList.remove("hidden");
-  overlay.classList.add("flex");
+  if (!$modal || !$modalTitle || !$modalBody) cacheDOM();
+  $modalTitle.textContent = title;
+  $modalBody.innerHTML = bodyHTML;
+  requestAnimationFrame(() => {
+    $modal.style.opacity = "1";
+    $modal.style.visibility = "visible";
+    $modal.style.pointerEvents = "auto";
+  });
+}
+
+function closeModal() {
+  if (!$modal) cacheDOM();
+  $modal.style.opacity = "0";
+  $modal.style.visibility = "hidden";
+  $modal.style.pointerEvents = "none";
+}
+
+function closeDropdown(menuEl) {
+  if (!menuEl) return;
+  menuEl.classList.add("hidden");
+  const btn = menuEl.parentElement?.querySelector("[data-dropdown-toggle]");
+  if (btn) btn.setAttribute("aria-expanded", "false");
+  if (activeDropdown === menuEl) activeDropdown = null;
 }
 
 function closeAllDropdowns() {
-  document.querySelectorAll("[id^='user-actions-'], [id^='agent-actions-'], [id^='skill-actions-'], [id^='contract-actions-'], [id^='error-actions-']")
-    .forEach((menu) => menu.classList.add("hidden"));
-
-  document.querySelectorAll("[data-dropdown-toggle]").forEach((button) => {
-    button.setAttribute("aria-expanded", "false");
-  });
+  if (activeDropdown) closeDropdown(activeDropdown);
 }
 
 const MENU_CONFIG = {
@@ -995,9 +896,33 @@ function buildMenuItems(item, idx, prefix, actions) {
   return actions.map((action) => {
     const baseClass = "block w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-100 dark:hover:bg-slate-800";
     const cls = action.className ? `${baseClass} ${action.className}` : baseClass;
-    return `<button type="button" data-${prefix}-${action.attr}="${item.id}" class="${cls}" role="menuitem">${action.label}</button>`;
+    return `<button type="button" data-action="${prefix}:${action.attr}:${item.id}" class="${cls}" role="menuitem">${action.label}</button>`;
   }).join("");
 }
+
+// ─── Action handlers: keyed by "prefix:action" ──────────────────────
+const ACTION_HANDLERS = {
+  "user:view":     (id) => openModal("Informacion del Usuario", userDetailMarkup(USERS.find((u) => u.id === id))),
+  "agent:view":    (id) => openModal("Detalle del agente", agentDetailMarkup(AGENTS.find((a) => a.id === id))),
+  "skill:view":    (id) => { const s = SKILLS.find((s) => s.id === id); openModal(`Detalle de skill: ${s.nombre}`, `<section class="space-y-3"><p>${s.descripcion}</p><p>Agentes con esta skill: ${s.habilitadaEn}</p><p>Detalle: ${s.detalle}</p></section>`); },
+  "contract:view": (id) => { const c = CONTRACTS.find((c) => c.id === id); openModal(`Detalle del contrato ${id.toUpperCase()}`, contractDetailMarkup(c)); },
+  "error:view":    (id) => { const e = ERRORS.find((e) => e.id === id); openModal(`Traza completa: ${e.agente}`, `<section class="space-y-3"><p>Tipo: ${e.tipo}</p><p>Descripcion: ${e.descripcion}</p><pre class="overflow-auto rounded-xl bg-[#F8F9FA] p-4 text-sm dark:bg-[#0B0F17]">${e.traza}</pre></section>`); },
+  "user:delete":   (id) => document.querySelector(`[data-user-row='${CSS.escape(id)}']`)?.remove(),
+  "agent:delete":  (id) => document.querySelector(`[data-agent-row='${CSS.escape(id)}']`)?.remove(),
+  "skill:delete":  (id) => document.querySelector(`[data-skill-row='${CSS.escape(id)}']`)?.remove(),
+  "contract:delete": (id) => document.querySelector(`[data-contract-row='${CSS.escape(id)}']`)?.remove(),
+  "error:delete":  (id) => document.querySelector(`[data-error-row='${CSS.escape(id)}']`)?.remove(),
+  "error:resolve": (id) => {
+    const row = document.querySelector(`[data-error-row='${CSS.escape(id)}']`);
+    if (!row) return;
+    row.style.opacity = "0.55";
+    const badge = row.querySelector("td:nth-child(4) span");
+    if (badge) {
+      badge.textContent = "Resuelto";
+      badge.className = "rounded-full px-2.5 py-1 text-xs font-semibold bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-200";
+    }
+  },
+};
 
 function populateMenus(pageKey) {
   const cfg = MENU_CONFIG[pageKey];
@@ -1116,6 +1041,21 @@ function handleActions(pageKey) {
     const target = event.target;
     if (!(target instanceof HTMLElement)) return;
 
+    // ── Entity action: single closest (view / delete / resolve) ────
+    const actionBtn = target.closest("[data-action]");
+    if (actionBtn) {
+      event.stopPropagation();
+      const key = actionBtn.getAttribute("data-action"); // "prefix:action:id"
+      if (!key) return;
+      const sep1 = key.indexOf(":");
+      const sep2 = key.indexOf(":", sep1 + 1);
+      const handler = ACTION_HANDLERS[key.slice(0, sep2 === -1 ? key.length : sep2)];
+      if (handler) handler(key.slice(sep2 + 1));
+      if (activeDropdown) closeDropdown(activeDropdown);
+      return;
+    }
+
+    // ── Dropdown toggle ────────────────────────────────────────────
     const toggle = target.closest("[data-dropdown-toggle]");
     if (toggle instanceof HTMLElement) {
       event.stopPropagation();
@@ -1123,67 +1063,30 @@ function handleActions(pageKey) {
       const menu = menuId ? toggle.parentElement.querySelector(`[id="${CSS.escape(menuId)}"]`) : null;
       if (menu) {
         const willOpen = menu.classList.contains("hidden");
-        closeAllDropdowns();
+        if (activeDropdown && activeDropdown !== menu) closeDropdown(activeDropdown);
         if (willOpen) {
           menu.classList.remove("hidden");
           toggle.setAttribute("aria-expanded", "true");
+          activeDropdown = menu;
+        } else if (activeDropdown === menu) {
+          closeDropdown(menu);
         }
       }
       return;
     }
 
-    const modalOverlay = document.getElementById("modal-overlay");
-    if (target.id === "modal-close" || target === modalOverlay) {
+    // ── Modal close ────────────────────────────────────────────────
+    if (target.id === "modal-close" || target === $modal) {
       closeModal();
       return;
     }
 
-    const ENTITY_ACTIONS = [
-      { prefix: "user",     selector: "view",    data: USERS,     act: (u) => openUserModal(u) },
-      { prefix: "agent",    selector: "view",    data: AGENTS,    act: (a) => openModal(`Detalle del agente: ${a.nombre}`, agentDetailMarkup(a)) },
-      { prefix: "skill",    selector: "view",    data: SKILLS,    act: (s) => openModal(`Detalle de skill: ${s.nombre}`, `<section class="space-y-3"><p>${s.descripcion}</p><p><strong>Agentes con esta skill:</strong> ${s.habilitadaEn}</p><p><strong>Detalle:</strong> ${s.detalle}</p></section>`) },
-      { prefix: "contract", selector: "view",    data: CONTRACTS, act: (c) => openModal(`Detalle del contrato ${c.id.toUpperCase()}`, contractDetailMarkup(c)) },
-      { prefix: "error",    selector: "view",    data: ERRORS,    act: (e) => openModal(`Traza completa: ${e.agente}`, `<section class="space-y-3"><p><strong>Tipo:</strong> ${e.tipo}</p><p><strong>Descripcion:</strong> ${e.descripcion}</p><pre class="overflow-auto rounded-xl bg-[#F8F9FA] p-4 text-sm dark:bg-[#0B0F17]">${e.traza}</pre></section>`) },
-      { prefix: "user",     selector: "delete",  act: (id) => document.querySelector(`[data-user-row='${id}']`)?.remove() },
-      { prefix: "agent",    selector: "delete",  act: (id) => document.querySelector(`[data-agent-row='${id}']`)?.remove() },
-      { prefix: "skill",    selector: "delete",  act: (id) => document.querySelector(`[data-skill-row='${id}']`)?.remove() },
-      { prefix: "contract", selector: "delete",  act: (id) => document.querySelector(`[data-contract-row='${id}']`)?.remove() },
-      { prefix: "error",    selector: "delete",  act: (id) => document.querySelector(`[data-error-row='${id}']`)?.remove() },
-      { prefix: "error",    selector: "resolve", act: (id) => {
-        const row = document.querySelector(`[data-error-row='${id}']`);
-        if (row) {
-          row.classList.add("opacity-55");
-          const badge = row.querySelector("td:nth-child(4) span");
-          if (badge) {
-            badge.textContent = "Resuelto";
-            badge.className = "rounded-full px-2.5 py-1 text-xs font-semibold bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-200";
-          }
-        }
-      }},
-    ];
-
-    for (const { prefix, selector, data, act } of ENTITY_ACTIONS) {
-      const btn = target.closest(`[data-${prefix}-${selector}]`);
-      if (btn) {
-        const id = btn.getAttribute(`data-${prefix}-${selector}`);
-        if (data) {
-          const item = data.find((e) => e.id === id);
-          if (item) act(item);
-        } else {
-          act(id);
-        }
-        closeAllDropdowns();
-        return;
-      }
+    // ── Click fuera del dropdown activo ────────────────────────────
+    if (activeDropdown && !activeDropdown.contains(target)) {
+      closeDropdown(activeDropdown);
     }
 
-    const isInsideDropdown = target.closest("[role='menu']") !== null;
-    const isToggleButton = target.closest("[data-dropdown-toggle]") !== null;
-
-    if (!isToggleButton && !isInsideDropdown) {
-      closeAllDropdowns();
-    }
-
+    // ── Skills toggle (solo página agentes) ────────────────────────
     if (pageKey === "agentes") {
       const skillsToggle = target.closest("[data-skill-toggle]");
       if (skillsToggle instanceof HTMLElement) {
@@ -1204,7 +1107,7 @@ function handleActions(pageKey) {
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       closeModal();
-      closeAllDropdowns();
+      if (activeDropdown) closeDropdown(activeDropdown);
     }
   });
 }
@@ -1217,7 +1120,7 @@ function bootstrapPanel() {
 
   app.innerHTML = renderLayout(pageKey, getPageContent(pageKey));
   populateMenus(pageKey);
-  cacheModalElements();
+  cacheDOM();
   initTheme();
   handleActions(pageKey);
 }
